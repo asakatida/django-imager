@@ -3,15 +3,15 @@ from django.db import models
 from multiselectfield import MultiSelectField
 
 
-class ImagerProfile:
+class ImagerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
     bio = models.TextField(blank=True, null=True)
-    phone = models.CharField(max_length=20, blank=True, null=Ture)
+    phone = models.CharField(max_length=20, blank=True, null=True)
     locatiion = models.CharField(max_length=180, blank=True, null=True)
     website = models.URLField(max_length=180, blank=True, null=True)
     fee = models.FloatField(blank=True, null=True)
-    camera = models.CharField(max_lenth=180, blank=True, null=True,
+    camera = models.CharField(max_length=180, blank=True, null=True,
                               choices=(('DSLR', 'Digital Single Lens Reflex'),
                                        ('M', "Mirrorless"),
                                        ('AC', 'Advanced Compact'),
