@@ -1,6 +1,7 @@
 {% load static %}
 {# Load the tag library #}
 {% load bootstrap3 %}
+
 <!DOCTYPE html>
 <html lang="{{request.locale_name}}">
 <head>
@@ -11,7 +12,7 @@
 
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
-{% bootstrap_javascript %}
+{% bootstrap_javascript jquery=1 %}
 
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
@@ -25,7 +26,7 @@
         
 {% if user.is_authenticated %}
 <div class="alert alert-success">
-        <h2>Welcome to the site {{ user.username }}</h2>
+        <h2>Welcome to the site,  {{ user.username }}</h2>
 </div>
 {% endif %}
     {% block header %}
@@ -34,18 +35,26 @@
   <h1>Imager</h1>
 </a>
 <nav>
-  <ul>
-    <li><a href="{% url "home" %}">Home</a></li>
-    {% if user.is_authenticated %}
-    <li><a href="">Profile</a></li>
-    <li><a href="">Products</a></li>
-    <li><a href="{% url "auth_logout" %}">Logout</a></li>
-    {% else %}
-    <li><a href="{% url "registration_register" %}">Signup</a></li>
-    <li><a href="{% url "auth_login" %}">Signin</a></li>
-    {% endif %}
-  </ul>
 </nav>
+  <div class="btn-group dropright">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dropright
+    </button>
+      <div class="dropdown-menu">
+        <ul>
+        <li><a href="{% url "home" %}">Home</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="">Profile</a></li>
+        <li><a href="">Products</a></li>
+        <li><a href="{% url "auth_logout" %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url "registration_register" %}">Signup</a></li>
+        <li><a href="{% url "auth_login" %}">Signin</a></li>
+        {% endif %}
+      </ul>
+      </div>
+    </div>
+
 {% endblock header %}
 
     
@@ -61,9 +70,5 @@
     {% block content %}
     
     {% endblock content %}
-
-  </main>
-  <nav>
- 
 </body>
 </html>
