@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'imagersite',
     'imager_profile',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
