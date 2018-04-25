@@ -133,4 +133,4 @@ STATIC_URL = '/static/'
 ACCOUNT_ACTIVATION_DAYS = 1
 LOGIN_REDIRECT_URL = '/'
 if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backend.console.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
