@@ -1,5 +1,8 @@
+confusable-homoglyphs==3.0.0
 Django==2.0.4
+django-bootstrap3==9.1.0
 django-multiselectfield==0.1.8
+django-registration==2.4.1
 factory-boy==2.10.0
 Faker==0.8.13
 flake8==3.5.0

@@ -1,0 +1,74 @@
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="{{request.locale_name}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<link rel="stylesheet" href="{% static 'cookies.css' %}">
+  <title>Document</title>
+</head>
+<body class="img-fluid">
+    
+  <nav>
+  <header>
+        
+{% if user.is_authenticated %}
+<div class="alert alert-success">
+        <h2>Welcome to the site,  {{ user.username }}</h2>
+</div>
+{% endif %}
+    {% block header %}
+    
+<a href="{% url 'home' %}">
+  <h1>Imager</h1>
+</a>
+<nav>
+</nav>
+  <div class="btn-group dropright">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dropright
+    </button>
+      <div class="dropdown-menu">
+        <ul>
+        <li><a href="{% url "home" %}">Home</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="">Profile</a></li>
+        <li><a href="">Products</a></li>
+        <li><a href="{% url "auth_logout" %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url "registration_register" %}">Signup</a></li>
+        <li><a href="{% url "auth_login" %}">Signin</a></li>
+        {% endif %}
+      </ul>
+      </div>
+    </div>
+
+{% endblock header %}
+
+    
+    
+    {% if message %}
+    <h3> {{ message }}</h3>
+    {% endif %}
+
+
+  </header>
+  <main class="main-header">
+
+    {% block content %}
+    
+    {% endblock content %}
+</body>
+</html>

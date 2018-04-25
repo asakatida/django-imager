@@ -4,6 +4,7 @@ import factory
 
 
 class UserFactory(factory.django.DjangoModelFactory):
+    """ make factory """
     class Meta:
         model = User
 
@@ -12,6 +13,7 @@ class UserFactory(factory.django.DjangoModelFactory):
 
 
 class ProfileFactory(factory.django.DjangoModelFactory):
+    """ setup factory """
     class Meta:
         model = ImagerProfile
 
@@ -49,6 +51,7 @@ class ProfileFactory(factory.django.DjangoModelFactory):
 
 
 class ProfileUnitTests(TestCase):
+    """ profile tests"""
     @classmethod
     def setUpClass(cls):
         super(TestCase, cls)
@@ -62,9 +65,11 @@ class ProfileUnitTests(TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        """ tear down class """
         super(TestCase, cls)
         User.objects.all().delete()
 
     def test_user_can_see_its_profile(self):
+        """ test user profile view """
         one_user = User.objects.first()
         self.assertIsNotNone(one_user.profile)

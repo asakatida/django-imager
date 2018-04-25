@@ -4,6 +4,7 @@ from multiselectfield import MultiSelectField
 
 
 class ImagerProfile(models.Model):
+    """ Main Class """
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
     bio = models.TextField(blank=True, null=True)
