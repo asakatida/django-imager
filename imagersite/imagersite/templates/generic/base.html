@@ -1,11 +1,13 @@
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap3 %}
 <!DOCTYPE html>
 <html lang="{{request.locale_name}}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-{# Load the tag library #}
-{% load bootstrap3 %}
+
 
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
@@ -13,11 +15,19 @@
 
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
+<link rel="stylesheet" href="{% static 'cookies.css' %}">
   <title>Document</title>
 </head>
-<body>
+<body class="img-fluid">
+    
   <nav>
   <header>
+        
+{% if user.is_authenticated %}
+<div class="alert alert-success">
+        <h2>Welcome to the site {{ user.username }}</h2>
+</div>
+{% endif %}
     {% block header %}
     
 <a href="{% url 'home' %}">
@@ -37,23 +47,23 @@
   </ul>
 </nav>
 {% endblock header %}
-<div class="banner">
-    {% if user.is_authenticated %}
-    <h3>Welcome to the site {{ user.username }}</h3>
-    {% endif %}
+
+    
+    
     {% if message %}
     <h3> {{ message }}</h3>
     {% endif %}
-</div>
+
 
   </header>
   <main class="main-header">
 
     {% block content %}
-    <p>Hello Homepage</p>
+    
     {% endblock content %}
 
   </main>
   <nav>
+ 
 </body>
 </html>
