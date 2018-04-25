@@ -18,11 +18,21 @@
 <nav>
   <ul>
     <li><a href="{% url 'home' %}">Home</a></li>
-  
+    {% if user.is_authenticated %}
+    {% else %}
+    <li><a href="{% url "registration_register" %}">Signup</a></li>
+    {% endif %}
   </ul>
 </nav>
 {% endblock header %}
-
+<div class="banner">
+    {% if user.is_authenticated %}
+    <h3>Welcome to the site {{ user.username }}</h3>
+    {% endif %}
+    {% if message %}
+    <h3> {{ message }}</h3>
+    {% endif %}
+</div>
 
   </header>
   <main class="main-header">
