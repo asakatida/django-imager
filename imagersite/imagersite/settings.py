@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'multiselectfield',
-    # 'sorl.thumbnail',
+    'sorl.thumbnail',
     'imagersite',
     'imager_profile',
-    # 'imager_products',
+    'imager_images',
     'bootstrap3',
 ]
 
@@ -133,8 +133,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
 
 # Django Registration Settings
 ACCOUNT_ACTIVATION_DAYS = 1

@@ -1,3 +1,4 @@
+"""Tests."""
 from django.test import TestCase
 from django.urls import reverse_lazy
 from django.core import mail
