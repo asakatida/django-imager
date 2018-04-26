@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
     path('accounts/', include('registration.backends.hmac.urls')),
-    path('images/', include('imager_iamges.urls')),
+    path('images/', include('imager_images.urls')),
     path('profile/', include('imager_profile.urls'))
 
 ]

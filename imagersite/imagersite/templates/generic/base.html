@@ -15,6 +15,7 @@
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=1 %}
 {% block meta %}
+
 {% endblock meta %}
 
 {# Display django.contrib.messages as Bootstrap alerts #}
@@ -47,8 +48,11 @@
         <ul>
         <li><a href="{% url "home" %}">Home</a></li>
         {% if user.is_authenticated %}
-        <li><a href="">Profile</a></li>
-        <li><a href="">Products</a></li>
+        <li><a href="{% url "profile" %}">Profile</a></li>
+        <li><a href="{% url "library" %}">Library</a></li>
+        {% if user.is_superuser %}
+        <li><a href="{% url "admin:index" %}">Admin</a></li>
+        {% endif %}
         <li><a href="{% url "auth_logout" %}">Logout</a></li>
         {% else %}
         <li><a href="{% url "registration_register" %}">Signup</a></li>
