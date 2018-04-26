@@ -44,6 +44,10 @@ venv
 None at this time
 
 ## Change log
+e3e17db (HEAD -> class-28-relationships) added tests
+5a1e029 added imager_images
+0b42420 (origin/master, origin/HEAD, master) Merge pull request #2 from jayadams011/class-27-registration
+4d8149e (origin/class-27-registration, class-27-registration) adding mkting text
 ce9eff6 (HEAD -> class-27-registration) added image top background....Salmon cookies rule
 ac912b6 added bootstrap css
 ac185c1 added login/logout
