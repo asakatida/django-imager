@@ -8,13 +8,13 @@ class Photo(models.Model):
     """Go away."""
 
     image = ImageField(upload_to='images')
-    title = models.CharField(max_length=180, default='Untitled')
+    title = models.CharField(max_length=250, default='Untitled')
     description = models.TextField(blank=True, null=True)
     date_uploaded = models.DateField(auto_now_add=True)
     date_modified = models.DateField(auto_now=True)
     date_published = models.DateField(blank=True, null=True)
     published = models.CharField(
-        max_length=7,
+        max_length=250,
         choices=(
             ('PRIVATE', 'Private'),
             ('SHARED', 'Shared'),
@@ -31,14 +31,14 @@ class Album(models.Model):
     """Album."""
 
     user = models.OneToOneField(User, related_name='album', on_delete=models.CASCADE, null=False)
-    photos = models.ManyToManyField(Photo, related_name='photos')
-    title = models.CharField(max_length=180, default='Untitled')
+    photos = models.ManyToManyField(Photo, related_name='album')
+    title = models.CharField(max_length=250, default='Untitled')
     description = models.TextField(blank=True, null=True)
     date_created = models.DateField(auto_now_add=True)
     date_modified = models.DateField(auto_now=True)
     date_published = models.DateField(blank=True, null=True)
     published = models.CharField(
-        max_length=7,
+        max_length=250,
         choices=(
             ('PRIVATE', 'Private'),
             ('SHARED', 'Shared'),
