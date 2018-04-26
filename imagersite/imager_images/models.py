@@ -5,7 +5,7 @@ from sorl.thumbnail import ImageField
 
 
 class Photo(models.Model):
-    """Go away."""
+    """Photo."""
 
     image = ImageField(upload_to='images')
     title = models.CharField(max_length=250, default='Untitled')
