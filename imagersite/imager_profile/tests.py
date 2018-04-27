@@ -12,17 +12,13 @@ class UserFactory(factory.django.DjangoModelFactory):
     email = factory.Faker('email')
 
 
-class ProfileFactory(factory.django.DjangoModelFactory):
-    """ setup factory """
-    class Meta:
-        model = ImagerProfile
-
-    bio = factory.Faker('paragraphs')
-    phone = factory.Faker('phone_number')
-    locatiion = factory.Faker('geo_coordinate')
-    website = factory.Faker('url')
-    fee = factory.Faker('pydecimal', right_digits=2, positive=True)
-    camera = factory.Faker(
+def populate_profile(user, **kwargs):
+    user.profile.bio = kwargs['bio'] if 'bio' in kwargs else factory.Faker('paragraphs')
+    user.profile.phone = kwargs['phone'] if 'phone' in kwargs else factory.Faker('phone_number')
+    user.profile.locatiion = kwargs['locatiion'] if 'locatiion' in kwargs else factory.Faker('geo_coordinate')
+    user.profile.website = kwargs['website'] if 'website' in kwargs else factory.Faker('url')
+    user.profile.fee = kwargs['fee'] if 'fee' in kwargs else factory.Faker('pydecimal', right_digits=2, positive=True)
+    user.profile.camera = kwargs['camera'] if 'camera' in kwargs else factory.Faker(
         'random_element',
         elements=[
             ('DSLR', 'Digital Single Lens Reflex'),
@@ -30,7 +26,7 @@ class ProfileFactory(factory.django.DjangoModelFactory):
             ('AC', 'Advanced Compact'),
             ('SLR', 'Single Lens Reflex')])
 
-    services = factory.Faker(
+    user.profile.services = kwargs['services'] if 'services' in kwargs else factory.Faker(
         'random_element',
         elements=[
             ('weddings', 'Weddings'),
@@ -39,7 +35,7 @@ class ProfileFactory(factory.django.DjangoModelFactory):
             ('portraits', 'Portraits'),
             ('art', 'Art')])
 
-    photostyles = factory.Faker(
+    user.profile.photostyles = kwargs['photostyles'] if 'photostyles' in kwargs else factory.Faker(
         'random_element',
         elements=[
             ('blackandwhite', 'Black and White'),
@@ -51,7 +47,8 @@ class ProfileFactory(factory.django.DjangoModelFactory):
 
 
 class ProfileUnitTests(TestCase):
-    """ profile tests"""
+    """Profile tests."""
+
     @classmethod
     def setUpClass(cls):
         super(TestCase, cls)
@@ -59,9 +56,8 @@ class ProfileUnitTests(TestCase):
             user = UserFactory.create()
             user.set_password(factory.Faker('password'))
             user.save()
+            populate_profile(user)
 
-            profile = ProfileFactory.create(user=user)
-            profile.save()
 
     @classmethod
     def tearDownClass(cls):
