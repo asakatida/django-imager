@@ -1,0 +1,297 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+0001_initial.py	../imager_images/migrations/0001_initial.py	1;"	kind:file	line:1
+0001_initial.py	../imager_profile/migrations/0001_initial.py	1;"	kind:file	line:1
+0002_auto_20180426_0106.py	../imager_images/migrations/0002_auto_20180426_0106.py	1;"	kind:file	line:1
+0003_auto_20180426_0205.py	../imager_images/migrations/0003_auto_20180426_0205.py	1;"	kind:file	line:1
+0004_album_cover.py	../imager_images/migrations/0004_album_cover.py	1;"	kind:file	line:1
+ACCOUNT_ACTIVATION_DAYS	../imagersite/settings.py	/^ACCOUNT_ACTIVATION_DAYS = 1$/;"	kind:variable	line:140
+ALLOWED_HOSTS	../imagersite/settings.py	/^ALLOWED_HOSTS = []$/;"	kind:variable	line:28
+AUTH_PASSWORD_VALIDATORS	../imagersite/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:100
+Album	../imager_images/admin.py	/^from .models import Photo, Album$/;"	kind:namespace	line:2
+Album	../imager_images/models.py	/^class Album(models.Model):$/;"	kind:class	line:30
+Album	../imager_images/tests.py	/^from .models import Photo, Album$/;"	kind:namespace	line:3
+Album	../imager_images/views.py	/^from .models import Album, Photo$/;"	kind:namespace	line:3
+Album	../imager_profile/views.py	/^from imager_images.models import Album, Photo$/;"	kind:namespace	line:2
+AlbumFactory	../imager_images/tests.py	/^class AlbumFactory(factory.django.DjangoModelFactory):$/;"	kind:class	line:35
+AppConfig	../imager_images/apps.py	/^from django.apps import AppConfig$/;"	kind:namespace	line:1
+AppConfig	../imager_profile/apps.py	/^from django.apps import AppConfig$/;"	kind:namespace	line:1
+BASE_DIR	../imagersite/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
+DATABASES	../imagersite/settings.py	/^DATABASES = {$/;"	kind:variable	line:82
+DEBUG	../imagersite/settings.py	/^DEBUG = True$/;"	kind:variable	line:26
+EMAIL_BACKEND	../imagersite/settings.py	/^    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'$/;"	kind:variable	line:143
+INSTALLED_APPS	../imagersite/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:33
+ImageField	../imager_images/models.py	/^from sorl.thumbnail import ImageField$/;"	kind:namespace	line:4
+ImagerImagesConfig	../imager_images/apps.py	/^class ImagerImagesConfig(AppConfig):$/;"	kind:class	line:4
+ImagerProfile	../imager_profile/admin.py	/^from .models import ImagerProfile$/;"	kind:namespace	line:2
+ImagerProfile	../imager_profile/models.py	/^class ImagerProfile(models.Model):$/;"	kind:class	line:7
+ImagerProfile	../imager_profile/tests.py	/^from .models import ImagerProfile, User$/;"	kind:namespace	line:2
+ImagerProfile	../imager_profile/views.py	/^from .models import ImagerProfile$/;"	kind:namespace	line:3
+ImagerProfileConfig	../imager_profile/apps.py	/^class ImagerProfileConfig(AppConfig):$/;"	kind:class	line:4
+LANGUAGE_CODE	../imagersite/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:119
+LOGIN_REDIRECT_URL	../imagersite/settings.py	/^LOGIN_REDIRECT_URL = '\/'$/;"	kind:variable	line:141
+MEDIA_ROOT	../imagersite/settings.py	/^MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')$/;"	kind:variable	line:137
+MEDIA_URL	../imagersite/settings.py	/^MEDIA_URL = '\/media\/'$/;"	kind:variable	line:136
+MIDDLEWARE	../imagersite/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:48
+Meta	../imager_images/tests.py	/^    class Meta:$/;"	kind:class	line:15
+Meta	../imager_images/tests.py	/^    class Meta:$/;"	kind:class	line:38
+Meta	../imager_profile/tests.py	/^    class Meta:$/;"	kind:class	line:17
+Meta	../imager_profile/tests.py	/^    class Meta:$/;"	kind:class	line:8
+Migration	../imager_images/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../imager_images/migrations/0002_auto_20180426_0106.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../imager_images/migrations/0003_auto_20180426_0205.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../imager_images/migrations/0004_album_cover.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:7
+Migration	../imager_profile/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+MultiSelectField	../imager_profile/models.py	/^from multiselectfield import MultiSelectField$/;"	kind:namespace	line:3
+Photo	../imager_images/admin.py	/^from .models import Photo, Album$/;"	kind:namespace	line:2
+Photo	../imager_images/models.py	/^class Photo(models.Model):$/;"	kind:class	line:7
+Photo	../imager_images/tests.py	/^from .models import Photo, Album$/;"	kind:namespace	line:3
+Photo	../imager_images/views.py	/^from .models import Album, Photo$/;"	kind:namespace	line:3
+Photo	../imager_profile/views.py	/^from imager_images.models import Album, Photo$/;"	kind:namespace	line:2
+PhotoFactory	../imager_images/tests.py	/^class PhotoFactory(factory.django.DjangoModelFactory):$/;"	kind:class	line:12
+ProfileFactory	../imager_profile/tests.py	/^class ProfileFactory(factory.django.DjangoModelFactory):$/;"	kind:class	line:15
+ProfileUnitTests	../imager_images/tests.py	/^class ProfileUnitTests(TestCase):$/;"	kind:class	line:56
+ProfileUnitTests	../imager_profile/tests.py	/^class ProfileUnitTests(TestCase):$/;"	kind:class	line:53
+ProfileUnitTests	../imagersite/tests.py	/^class ProfileUnitTests(TestCase):$/;"	kind:class	line:8
+ROOT_URLCONF	../imagersite/settings.py	/^ROOT_URLCONF = 'imagersite.urls'$/;"	kind:variable	line:58
+SECRET_KEY	../imagersite/settings.py	/^SECRET_KEY = os.environ.get('SECRET_KEY', None)$/;"	kind:variable	line:23
+STATIC_ROOT	../imagersite/settings.py	/^STATIC_ROOT = os.path.join(BASE_DIR, 'static')$/;"	kind:variable	line:134
+STATIC_URL	../imagersite/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:133
+TEMPLATES	../imagersite/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:60
+TIME_ZONE	../imagersite/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:121
+TestCase	../imager_images/tests.py	/^from django.test import TestCase$/;"	kind:namespace	line:2
+TestCase	../imager_profile/tests.py	/^from django.test import TestCase$/;"	kind:namespace	line:1
+TestCase	../imagersite/tests.py	/^from django.test import TestCase$/;"	kind:namespace	line:2
+USE_I18N	../imagersite/settings.py	/^USE_I18N = True$/;"	kind:variable	line:123
+USE_L10N	../imagersite/settings.py	/^USE_L10N = True$/;"	kind:variable	line:125
+USE_TZ	../imagersite/settings.py	/^USE_TZ = True$/;"	kind:variable	line:127
+User	../imager_images/models.py	/^from django.contrib.auth.models import User$/;"	kind:namespace	line:3
+User	../imager_images/tests.py	/^from django.contrib.auth.models import User$/;"	kind:namespace	line:7
+User	../imager_images/views.py	/^from django.contrib.auth.models import User$/;"	kind:namespace	line:2
+User	../imager_profile/models.py	/^from django.contrib.auth.models import User$/;"	kind:namespace	line:1
+User	../imager_profile/tests.py	/^from .models import ImagerProfile, User$/;"	kind:namespace	line:2
+UserFactory	../imager_profile/tests.py	/^class UserFactory(factory.django.DjangoModelFactory):$/;"	kind:class	line:6
+WSGI_APPLICATION	../imagersite/settings.py	/^WSGI_APPLICATION = 'imagersite.wsgi.application'$/;"	kind:variable	line:76
+__init__.py	../imager_images/__init__.py	1;"	kind:file	line:1
+__init__.py	../imager_images/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../imager_profile/__init__.py	1;"	kind:file	line:1
+__init__.py	../imager_profile/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../imagersite/__init__.py	1;"	kind:file	line:1
+__str__	../imager_images/models.py	/^    def __str__(self):$/;"	kind:member	line:25
+__str__	../imager_images/models.py	/^    def __str__(self):$/;"	kind:member	line:50
+__str__	../imager_profile/models.py	/^    def __str__(self):$/;"	kind:member	line:39
+active	../imager_profile/models.py	/^    def active(cls):$/;"	kind:member	line:43
+admin	../imager_images/admin.py	/^from django.contrib import admin$/;"	kind:namespace	line:1
+admin	../imager_profile/admin.py	/^from django.contrib import admin$/;"	kind:namespace	line:1
+admin	../imagersite/urls.py	/^from django.contrib import admin$/;"	kind:namespace	line:16
+admin.py	../imager_images/admin.py	1;"	kind:file	line:1
+admin.py	../imager_profile/admin.py	1;"	kind:file	line:1
+album_view	../imager_images/urls.py	/^from .views import library_view, photo_view, album_view$/;"	kind:namespace	line:2
+album_view	../imager_images/views.py	/^def album_view(request, album_id=None):$/;"	kind:function	line:7
+application	../imagersite/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+apps.py	../imager_images/apps.py	1;"	kind:file	line:1
+apps.py	../imager_profile/apps.py	1;"	kind:file	line:1
+bio	../imager_profile/models.py	/^    bio = models.TextField(blank=True, null=True)$/;"	kind:variable	line:11
+bio	../imager_profile/tests.py	/^    bio = factory.Faker('paragraphs')$/;"	kind:variable	line:20
+camera	../imager_profile/models.py	/^    camera = models.CharField(max_length=180, blank=True, null=True,$/;"	kind:variable	line:16
+camera	../imager_profile/tests.py	/^    camera = factory.Faker($/;"	kind:variable	line:25
+choices	../imager_images/models.py	/^        choices=($/;"	kind:variable	line:18
+choices	../imager_images/models.py	/^        choices=($/;"	kind:variable	line:43
+choices	../imager_profile/models.py	/^                              choices=(('DSLR', 'Digital Single Lens Reflex'),$/;"	kind:variable	line:17
+choices	../imager_profile/models.py	/^        choices=(('blackandwhite', 'Black and White'),$/;"	kind:variable	line:30
+choices	../imager_profile/models.py	/^        choices=(('weddings', 'Weddings'),$/;"	kind:variable	line:23
+cover	../imager_images/models.py	/^    cover = ImageField(upload_to='images', blank=True, null=True)$/;"	kind:variable	line:37
+create_profile	../imager_profile/models.py	/^def create_profile(sender, **kwargs):$/;"	kind:function	line:48
+date_created	../imager_images/models.py	/^    date_created = models.DateField(auto_now_add=True)$/;"	kind:variable	line:38
+date_created	../imager_images/tests.py	/^    date_created = factory.Faker('date')$/;"	kind:variable	line:43
+date_modified	../imager_images/models.py	/^    date_modified = models.DateField(auto_now=True)$/;"	kind:variable	line:14
+date_modified	../imager_images/models.py	/^    date_modified = models.DateField(auto_now=True)$/;"	kind:variable	line:39
+date_modified	../imager_images/tests.py	/^    date_modified = factory.Faker('date')$/;"	kind:variable	line:23
+date_modified	../imager_images/tests.py	/^    date_modified = factory.Faker('date')$/;"	kind:variable	line:44
+date_published	../imager_images/models.py	/^    date_published = models.DateField(blank=True, null=True)$/;"	kind:variable	line:15
+date_published	../imager_images/models.py	/^    date_published = models.DateField(blank=True, null=True)$/;"	kind:variable	line:40
+date_published	../imager_images/tests.py	/^    date_published = factory.Faker('date')$/;"	kind:variable	line:24
+date_published	../imager_images/tests.py	/^    date_published = factory.Faker('date')$/;"	kind:variable	line:45
+date_uploaded	../imager_images/models.py	/^    date_uploaded = models.DateField(auto_now_add=True)$/;"	kind:variable	line:13
+date_uploaded	../imager_images/tests.py	/^    date_uploaded = factory.Faker('date')$/;"	kind:variable	line:22
+db	../imager_images/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+db	../imager_profile/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+db	../imager_profile/migrations/0001_initial.py	/^import multiselectfield.db.fields$/;"	kind:namespace	line:6
+deletion	../imager_images/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+deletion	../imager_profile/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+dependencies	../imager_images/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:13
+dependencies	../imager_images/migrations/0002_auto_20180426_0106.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../imager_images/migrations/0003_auto_20180426_0205.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../imager_images/migrations/0004_album_cover.py	/^    dependencies = [$/;"	kind:variable	line:9
+dependencies	../imager_profile/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:13
+description	../imager_images/models.py	/^    description = models.TextField(blank=True, null=True)$/;"	kind:variable	line:12
+description	../imager_images/models.py	/^    description = models.TextField(blank=True, null=True)$/;"	kind:variable	line:36
+description	../imager_images/tests.py	/^    description = factory.Faker('word')$/;"	kind:variable	line:21
+description	../imager_images/tests.py	/^    description = fake.text(max_nb_chars=250, ext_word_list=None)$/;"	kind:variable	line:42
+django	../imager_images/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+django	../imager_profile/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+elements	../imager_images/tests.py	/^        elements=[$/;"	kind:variable	line:27
+elements	../imager_images/tests.py	/^        elements=[$/;"	kind:variable	line:48
+elements	../imager_profile/tests.py	/^        elements=[$/;"	kind:variable	line:27
+elements	../imager_profile/tests.py	/^        elements=[$/;"	kind:variable	line:35
+elements	../imager_profile/tests.py	/^        elements=[$/;"	kind:variable	line:44
+email	../imager_profile/tests.py	/^    email = factory.Faker('email')$/;"	kind:variable	line:12
+execute_from_command_line	../manage.py	/^        from django.core.management import execute_from_command_line$/;"	kind:namespace	line:9
+factory	../imager_images/tests.py	/^import factory$/;"	kind:namespace	line:4
+factory	../imager_profile/tests.py	/^import factory$/;"	kind:namespace	line:3
+fake	../imager_images/tests.py	/^fake = faker.Faker()$/;"	kind:variable	line:9
+faker	../imager_images/tests.py	/^import faker$/;"	kind:namespace	line:6
+fee	../imager_profile/models.py	/^    fee = models.FloatField(blank=True, null=True)$/;"	kind:variable	line:15
+fee	../imager_profile/tests.py	/^    fee = factory.Faker('pydecimal', right_digits=2, positive=True)$/;"	kind:variable	line:24
+field	../imager_images/migrations/0001_initial.py	/^            field=models.ManyToManyField(related_name='photos', to='imager_images.Photo'),$/;"	kind:variable	line:46
+field	../imager_images/migrations/0001_initial.py	/^            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='album', to=settings.AUTH_USER_MODEL),$/;"	kind:variable	line:51
+field	../imager_images/migrations/0002_auto_20180426_0106.py	/^            field=models.ManyToManyField(related_name='album', to='imager_images.Photo'),$/;"	kind:variable	line:16
+field	../imager_images/migrations/0003_auto_20180426_0205.py	/^            field=models.CharField(choices=[('PRIVATE', 'Private'), ('SHARED', 'Shared'), ('PUBLIC', 'Public')], max_length=250),$/;"	kind:variable	line:16
+field	../imager_images/migrations/0003_auto_20180426_0205.py	/^            field=models.CharField(choices=[('PRIVATE', 'Private'), ('SHARED', 'Shared'), ('PUBLIC', 'Public')], max_length=250),$/;"	kind:variable	line:26
+field	../imager_images/migrations/0003_auto_20180426_0205.py	/^            field=models.CharField(default='Untitled', max_length=250),$/;"	kind:variable	line:21
+field	../imager_images/migrations/0003_auto_20180426_0205.py	/^            field=models.CharField(default='Untitled', max_length=250),$/;"	kind:variable	line:31
+field	../imager_images/migrations/0004_album_cover.py	/^            field=sorl.thumbnail.fields.ImageField(blank=True, null=True, upload_to='images'),$/;"	kind:variable	line:17
+fields	../imager_images/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:20
+fields	../imager_images/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:32
+fields	../imager_images/migrations/0001_initial.py	/^import sorl.thumbnail.fields$/;"	kind:namespace	line:6
+fields	../imager_images/migrations/0004_album_cover.py	/^import sorl.thumbnail.fields$/;"	kind:namespace	line:4
+fields	../imager_profile/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:20
+fields	../imager_profile/migrations/0001_initial.py	/^import multiselectfield.db.fields$/;"	kind:namespace	line:6
+get_object_or_404	../imager_images/views.py	/^from django.shortcuts import render, redirect, get_object_or_404$/;"	kind:namespace	line:4
+get_object_or_404	../imager_profile/views.py	/^from django.shortcuts import render, redirect, get_object_or_404$/;"	kind:namespace	line:1
+get_user_model	../imager_images/tests.py	/^from django.contrib.auth import get_user_model$/;"	kind:namespace	line:5
+get_wsgi_application	../imagersite/wsgi.py	/^from django.core.wsgi import get_wsgi_application$/;"	kind:namespace	line:12
+home_view	../imagersite/urls.py	/^from .views import home_view$/;"	kind:namespace	line:18
+home_view	../imagersite/views.py	/^def home_view(request):$/;"	kind:function	line:4
+image	../imager_images/models.py	/^    image = ImageField(upload_to='images')$/;"	kind:variable	line:10
+image	../imager_images/tests.py	/^    image = factory.Faker('image_url')$/;"	kind:variable	line:20
+include	../imagersite/urls.py	/^from django.urls import path, include$/;"	kind:namespace	line:17
+initial	../imager_images/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:11
+initial	../imager_profile/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:11
+is_active	../imager_profile/models.py	/^    is_active = models.BooleanField(default=True)$/;"	kind:variable	line:37
+library_view	../imager_images/urls.py	/^from .views import library_view, photo_view, album_view$/;"	kind:namespace	line:2
+library_view	../imager_images/views.py	/^def library_view(request):$/;"	kind:function	line:27
+locatiion	../imager_profile/models.py	/^    locatiion = models.CharField(max_length=180, blank=True, null=True)$/;"	kind:variable	line:13
+locatiion	../imager_profile/tests.py	/^    locatiion = factory.Faker('geo_coordinate')$/;"	kind:variable	line:22
+mail	../imagersite/tests.py	/^from django.core import mail$/;"	kind:namespace	line:4
+manage.py	../manage.py	1;"	kind:file	line:1
+max_length	../imager_images/models.py	/^        max_length=250,$/;"	kind:variable	line:17
+max_length	../imager_images/models.py	/^        max_length=250,$/;"	kind:variable	line:42
+migrations	../imager_images/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+migrations	../imager_images/migrations/0002_auto_20180426_0106.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../imager_images/migrations/0003_auto_20180426_0205.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../imager_images/migrations/0004_album_cover.py	/^from django.db import migrations$/;"	kind:namespace	line:3
+migrations	../imager_profile/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+model	../imager_images/tests.py	/^        model = Album$/;"	kind:variable	line:41
+model	../imager_images/tests.py	/^        model = Photo$/;"	kind:variable	line:18
+model	../imager_profile/tests.py	/^        model = ImagerProfile$/;"	kind:variable	line:18
+model	../imager_profile/tests.py	/^        model = User$/;"	kind:variable	line:9
+model_name	../imager_images/migrations/0001_initial.py	/^            model_name='album',$/;"	kind:variable	line:44
+model_name	../imager_images/migrations/0001_initial.py	/^            model_name='album',$/;"	kind:variable	line:49
+model_name	../imager_images/migrations/0002_auto_20180426_0106.py	/^            model_name='album',$/;"	kind:variable	line:14
+model_name	../imager_images/migrations/0003_auto_20180426_0205.py	/^            model_name='album',$/;"	kind:variable	line:14
+model_name	../imager_images/migrations/0003_auto_20180426_0205.py	/^            model_name='album',$/;"	kind:variable	line:19
+model_name	../imager_images/migrations/0003_auto_20180426_0205.py	/^            model_name='photo',$/;"	kind:variable	line:24
+model_name	../imager_images/migrations/0003_auto_20180426_0205.py	/^            model_name='photo',$/;"	kind:variable	line:29
+model_name	../imager_images/migrations/0004_album_cover.py	/^            model_name='album',$/;"	kind:variable	line:15
+models	../imager_images/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+models	../imager_images/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+models	../imager_images/migrations/0002_auto_20180426_0106.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../imager_images/migrations/0003_auto_20180426_0205.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../imager_images/models.py	/^from django.db import models$/;"	kind:namespace	line:2
+models	../imager_profile/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+models	../imager_profile/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+models	../imager_profile/models.py	/^from django.db import models$/;"	kind:namespace	line:2
+models.py	../imager_images/models.py	1;"	kind:file	line:1
+models.py	../imager_profile/models.py	1;"	kind:file	line:1
+multiselectfield	../imager_profile/migrations/0001_initial.py	/^import multiselectfield.db.fields$/;"	kind:namespace	line:6
+name	../imager_images/apps.py	/^    name = 'imager_images'$/;"	kind:variable	line:5
+name	../imager_images/migrations/0001_initial.py	/^            name='Album',$/;"	kind:variable	line:19
+name	../imager_images/migrations/0001_initial.py	/^            name='Photo',$/;"	kind:variable	line:31
+name	../imager_images/migrations/0001_initial.py	/^            name='photos',$/;"	kind:variable	line:45
+name	../imager_images/migrations/0001_initial.py	/^            name='user',$/;"	kind:variable	line:50
+name	../imager_images/migrations/0002_auto_20180426_0106.py	/^            name='photos',$/;"	kind:variable	line:15
+name	../imager_images/migrations/0003_auto_20180426_0205.py	/^            name='published',$/;"	kind:variable	line:15
+name	../imager_images/migrations/0003_auto_20180426_0205.py	/^            name='published',$/;"	kind:variable	line:25
+name	../imager_images/migrations/0003_auto_20180426_0205.py	/^            name='title',$/;"	kind:variable	line:20
+name	../imager_images/migrations/0003_auto_20180426_0205.py	/^            name='title',$/;"	kind:variable	line:30
+name	../imager_images/migrations/0004_album_cover.py	/^            name='cover',$/;"	kind:variable	line:16
+name	../imager_profile/apps.py	/^    name = 'imager_profile'$/;"	kind:variable	line:6
+name	../imager_profile/migrations/0001_initial.py	/^            name='ImagerProfile',$/;"	kind:variable	line:19
+operations	../imager_images/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:17
+operations	../imager_images/migrations/0002_auto_20180426_0106.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../imager_images/migrations/0003_auto_20180426_0205.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../imager_images/migrations/0004_album_cover.py	/^    operations = [$/;"	kind:variable	line:13
+operations	../imager_profile/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:17
+os	../imagersite/settings.py	/^import os$/;"	kind:namespace	line:13
+os	../imagersite/wsgi.py	/^import os$/;"	kind:namespace	line:10
+os	../manage.py	/^import os$/;"	kind:namespace	line:2
+path	../imager_images/urls.py	/^from django.urls import path$/;"	kind:namespace	line:1
+path	../imager_profile/urls.py	/^from django.urls import path$/;"	kind:namespace	line:1
+path	../imagersite/urls.py	/^from django.urls import path, include$/;"	kind:namespace	line:17
+phone	../imager_profile/models.py	/^    phone = models.CharField(max_length=20, blank=True, null=True)$/;"	kind:variable	line:12
+phone	../imager_profile/tests.py	/^    phone = factory.Faker('phone_number')$/;"	kind:variable	line:21
+photo_view	../imager_images/urls.py	/^from .views import library_view, photo_view, album_view$/;"	kind:namespace	line:2
+photo_view	../imager_images/views.py	/^def photo_view(request, photo_id=None):$/;"	kind:function	line:17
+photos	../imager_images/models.py	/^    photos = models.ManyToManyField(Photo, related_name='album')$/;"	kind:variable	line:34
+photostyles	../imager_profile/models.py	/^    photostyles = MultiSelectField($/;"	kind:variable	line:29
+photostyles	../imager_profile/tests.py	/^    photostyles = factory.Faker($/;"	kind:variable	line:42
+profile_view	../imager_profile/urls.py	/^from .views import profile_view$/;"	kind:namespace	line:2
+profile_view	../imager_profile/views.py	/^def profile_view(request, username=None):$/;"	kind:function	line:6
+published	../imager_images/models.py	/^    published = models.CharField($/;"	kind:variable	line:16
+published	../imager_images/models.py	/^    published = models.CharField($/;"	kind:variable	line:41
+published	../imager_images/tests.py	/^    published = factory.Faker($/;"	kind:variable	line:25
+published	../imager_images/tests.py	/^    published = factory.Faker($/;"	kind:variable	line:46
+receiver	../imager_profile/models.py	/^from django.dispatch import receiver$/;"	kind:namespace	line:4
+redirect	../imager_images/views.py	/^from django.shortcuts import render, redirect, get_object_or_404$/;"	kind:namespace	line:4
+redirect	../imager_profile/views.py	/^from django.shortcuts import render, redirect, get_object_or_404$/;"	kind:namespace	line:1
+render	../imager_images/views.py	/^from django.shortcuts import render$/;"	kind:namespace	line:1
+render	../imager_images/views.py	/^from django.shortcuts import render, redirect, get_object_or_404$/;"	kind:namespace	line:4
+render	../imager_profile/views.py	/^from django.shortcuts import render, redirect, get_object_or_404$/;"	kind:namespace	line:1
+render	../imagersite/views.py	/^from django.shortcuts import render$/;"	kind:namespace	line:1
+reverse	../imager_images/views.py	/^from django.urls import reverse$/;"	kind:namespace	line:5
+reverse_lazy	../imagersite/tests.py	/^from django.urls import reverse_lazy$/;"	kind:namespace	line:3
+services	../imager_profile/models.py	/^    services = MultiSelectField($/;"	kind:variable	line:22
+services	../imager_profile/tests.py	/^    services = factory.Faker($/;"	kind:variable	line:33
+setUpClass	../imager_profile/tests.py	/^    def setUpClass(cls):$/;"	kind:member	line:56
+settings	../imager_images/migrations/0001_initial.py	/^from django.conf import settings$/;"	kind:namespace	line:3
+settings	../imager_profile/migrations/0001_initial.py	/^from django.conf import settings$/;"	kind:namespace	line:3
+settings	../imagersite/urls.py	/^from django.conf import settings$/;"	kind:namespace	line:20
+settings.py	../imagersite/settings.py	1;"	kind:file	line:1
+sorl	../imager_images/migrations/0001_initial.py	/^import sorl.thumbnail.fields$/;"	kind:namespace	line:6
+sorl	../imager_images/migrations/0004_album_cover.py	/^import sorl.thumbnail.fields$/;"	kind:namespace	line:4
+static	../imagersite/urls.py	/^from django.conf.urls.static import static$/;"	kind:namespace	line:19
+sys	../manage.py	/^import sys$/;"	kind:namespace	line:3
+tearDownClass	../imager_profile/tests.py	/^    def tearDownClass(cls):$/;"	kind:member	line:67
+test_get_home_page	../imagersite/tests.py	/^    def test_get_home_page(self):$/;"	kind:member	line:18
+test_get_registration_page	../imagersite/tests.py	/^    def test_get_registration_page(self):$/;"	kind:member	line:25
+test_register_user	../imagersite/tests.py	/^    def test_register_user(self):$/;"	kind:member	line:32
+test_user_can_see_its_profile	../imager_images/tests.py	/^    def test_user_can_see_its_profile(self):$/;"	kind:member	line:59
+test_user_can_see_its_profile	../imager_profile/tests.py	/^    def test_user_can_see_its_profile(self):$/;"	kind:member	line:72
+tests.py	../imager_images/tests.py	1;"	kind:file	line:1
+tests.py	../imager_profile/tests.py	1;"	kind:file	line:1
+tests.py	../imagersite/tests.py	1;"	kind:file	line:1
+thumbnail	../imager_images/migrations/0001_initial.py	/^import sorl.thumbnail.fields$/;"	kind:namespace	line:6
+thumbnail	../imager_images/migrations/0004_album_cover.py	/^import sorl.thumbnail.fields$/;"	kind:namespace	line:4
+title	../imager_images/models.py	/^    title = models.CharField(max_length=250, default='Untitled')$/;"	kind:variable	line:11
+title	../imager_images/models.py	/^    title = models.CharField(max_length=250, default='Untitled')$/;"	kind:variable	line:35
+urlparse	../imagersite/tests.py	/^from urllib.parse import urlparse$/;"	kind:namespace	line:5
+urlpatterns	../imager_images/urls.py	/^urlpatterns = [$/;"	kind:variable	line:5
+urlpatterns	../imager_profile/urls.py	/^urlpatterns = [$/;"	kind:variable	line:5
+urlpatterns	../imagersite/urls.py	/^urlpatterns = [$/;"	kind:variable	line:22
+urls.py	../imager_images/urls.py	1;"	kind:file	line:1
+urls.py	../imager_profile/urls.py	1;"	kind:file	line:1
+urls.py	../imagersite/urls.py	1;"	kind:file	line:1
+user	../imager_images/models.py	/^    user = models.OneToOneField(User, related_name='album', on_delete=models.CASCADE, null=False)$/;"	kind:variable	line:33
+user	../imager_profile/models.py	/^    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')$/;"	kind:variable	line:9
+username	../imager_profile/tests.py	/^    username = factory.Faker('user_name')$/;"	kind:variable	line:11
+views.py	../imager_images/views.py	1;"	kind:file	line:1
+views.py	../imager_profile/views.py	1;"	kind:file	line:1
+views.py	../imagersite/views.py	1;"	kind:file	line:1
+website	../imager_profile/models.py	/^    website = models.URLField(max_length=180, blank=True, null=True)$/;"	kind:variable	line:14
+website	../imager_profile/tests.py	/^    website = factory.Faker('url')$/;"	kind:variable	line:23
+wsgi.py	../imagersite/wsgi.py	1;"	kind:file	line:1

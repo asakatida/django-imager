@@ -5,7 +5,8 @@ from django.dispatch import receiver
 
 
 class ImagerProfile(models.Model):
-    """ Main Class """
+    """Main Class."""
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
     bio = models.TextField(blank=True, null=True)
@@ -37,15 +38,18 @@ class ImagerProfile(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
+        """Str magic."""
         return self.user.username
 
     @classmethod
     def active(cls):
+        """Class Active."""
         return cls.objects.filter(is_active=True)
 
 
 @receiver(models.signals.post_save, sender=User)
 def create_profile(sender, **kwargs):
+    """Create Profile with kwargs."""
     if kwargs['created']:
         profile = ImagerProfile(user=kwargs['instance'])
         profile.save()

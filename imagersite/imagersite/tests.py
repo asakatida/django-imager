@@ -6,6 +6,8 @@ from urllib.parse import urlparse
 
 
 class ProfileUnitTests(TestCase):
+    """Test for Unit Profile."""
+
     # def setUp(self):
     #     super().setUp()
     #     self.client = Client()
@@ -15,22 +17,25 @@ class ProfileUnitTests(TestCase):
     #     super().setUp()
 
     def test_get_home_page(self):
-        """ test home page """
+        """Test home page."""
         response = self.client.get(reverse_lazy('home'), follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, 'generic/home.html')
         self.assertEqual(response.templates[1].name, 'generic/base.html')
 
     def test_get_registration_page(self):
-        """ test registration page """
+        """Test registration page."""
         response = self.client.get(reverse_lazy('registration_register'), follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, 'registration/registration_form.html')
         self.assertEqual(response.templates[1].name, 'generic/base.html')
 
     def test_register_user(self):
-        """ test for user registration """
-        response = self.client.post(reverse_lazy('registration_register'), {'username': 'wat', 'password1': 'password', 'password2': 'password', 'email': 'wat@wat.com'}, follow=True)
+        """Test for user registration."""
+        response = self.client.post(reverse_lazy('registration_register'), {'username': 'wat',
+                                    'password1': 'password', 'password2': 'password',
+                                                                            'email': 'wat@wat.com'},
+                                    follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, 'registration/registration_complete.html')
         self.assertEqual(response.templates[1].name, 'generic/base.html')
