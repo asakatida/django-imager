@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from imager_images.models import Album, Photo
+from .models import ImagerProfile
 
 
 def profile_view(request, username=None):
