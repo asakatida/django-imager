@@ -1,0 +1,50 @@
+{% extends "generic/base.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+<link rel="stylesheet" href="https://raw.githubusercontent.com/asyraf9/bootstrap-sidebar/master/dist/css/sidebar.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/asyraf9/bootstrap-sidebar/master/dist/js/sidebar.js">
+{% endblock meta %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<section class="profile-container container">
+        {% if profile.user.username == user.username %}
+        <a href="{% url "settings" username=user.username %}">{% trans "Edit Profile" %}</a>
+        
+    <section class="settings-container container">
+        <button type="button" class="navbar-toggle" data-toggle="sidebar" data-target=".sidebar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="col-xs-7 col-sm-3 col-md-2 sidebar sidebar-left sidebar-animate">
+                    <!-- content -->
+            </div>
+    </section>
+    {% endif %}
+  {% if user.first_name %}
+  <h3>{% trans "Welcome" %}, {{ user.first_name }}</h3>
+  {% else %}
+  <h3>{% trans "Welcome" %} {{ user.username }}</h3>
+  {% endif %}
+
+  <h2>You're viewing the profile for {{ profile.user.username }}</h2>
+  <p>{% trans "Last Login" %}: {{ profile.user.last_login }}</p>
+  <p>{% trans "Member Since" %}: {{ profile.user.date_joined }}</p>
+
+  <section class="profile-info">
+    <h2>Profile Information</h2>
+    
+  </section>
+
+  <!-- Handle the Product and Photo context that was passed from the view -->
+
+</section>
+{% else %}
+<h1>{% trans "Please log into the site" %}</h1>
+{% endif %}
+{% endblock content %}
+

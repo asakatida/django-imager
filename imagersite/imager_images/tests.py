@@ -13,7 +13,7 @@ class PhotoFactory(factory.django.DjangoModelFactory):
     """Make photo factory."""
 
     class Meta:
-        """Meat Pie."""
+        """Class for Meta."""
 
         model = Photo
 
@@ -36,7 +36,7 @@ class AlbumFactory(factory.django.DjangoModelFactory):
     """Make photo factory."""
 
     class Meta:
-        """Meat Pie."""
+        """Class for Meta."""
 
         model = Album
     description = fake.text(max_nb_chars=250, ext_word_list=None)
