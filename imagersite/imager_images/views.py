@@ -7,8 +7,6 @@ from django.urls import reverse
 
 def album_view(request, album_id=None):
     """Album View."""
-    if album_id:
-        return render(request, 'imager_images/album.html')
     username = request.user.get_username()
     owner = True
     if username == '':
@@ -24,13 +22,20 @@ def album_view(request, album_id=None):
                     args=[album.id])} for album in albums],
         'photos': [{'thumb': photo, 'link': reverse('photo', args=[photo.id])} for photo in photos]
     }
+    if album_id:
+        context['album'] = Album.objects.filter(id=album_id)
+        return render(request, 'imager_images/album.html', context)
     return render(request, 'imager_images/albums.html', context)
 
 
 def photo_view(request, photo_id=None):
     """Photo View."""
     if photo_id:
-        return render(request, 'imager_images/photo.html')
+        photo = get_object_or_404(Photo, id=photo_id)
+        context = {
+            'photo': {'thumb': photo, 'link': reverse('photo', args=[photo.id])}
+        }
+        return render(request, 'imager_images/photo.html', context)
     username = request.user.get_username()
     owner = True
     if username == '':
