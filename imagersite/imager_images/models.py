@@ -34,6 +34,7 @@ class Album(models.Model):
     photos = models.ManyToManyField(Photo, related_name='album')
     title = models.CharField(max_length=250, default='Untitled')
     description = models.TextField(blank=True, null=True)
+    cover = ImageField(upload_to='images', blank=True, null=True)
     date_created = models.DateField(auto_now_add=True)
     date_modified = models.DateField(auto_now=True)
     date_published = models.DateField(blank=True, null=True)
