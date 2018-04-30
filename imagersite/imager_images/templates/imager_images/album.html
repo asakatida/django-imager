@@ -3,17 +3,23 @@
 {% load i18n %}
 
 {% block content %}
-{% thumbnail album.cover.image "200x100" as im %}
-        <a href="{{album.link}}"><img src="{{ im.url }}"></a>
+<div class="col-xs-12 col-md-8">
+
+{% thumbnail album.cover.image "250x250" as im %}
+        <a href="{% url 'photo' album.cover.id %}"><img src="{{ im.url }}"></a>
     {% endthumbnail %}
-    <ul>
+</div>
+
+    <div class="col-xs-12">
         {% for photo in photos %}
-        <li>
-            {% thumbnail photo.thumb.image "200x100" as im %}
-            <a href="{{photo.link}}"><img src="{{ im.url }}"></a>
+        <div class="col-xs-6 col-md-4"></div>
+            {% thumbnail photo.image "250x250" as im %}
+            <a href="{% url 'photo' photo.id %}"><img src="{{ im.url }}"></a>
             {% endthumbnail %}
-            </li>
+        </div>
+        
         {% endfor %}
-        </ul>
+    </div>
+    
     
 {% endblock content %}
