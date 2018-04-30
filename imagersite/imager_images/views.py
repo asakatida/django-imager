@@ -3,6 +3,14 @@ from django.contrib.auth.models import User
 from .models import Album, Photo
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.db.models import Q
+from random import sample
+
+
+def _public_or_user(model, username):
+    if model == Photo:
+        return model.objects.filter(Q(album__user__username=username) | Q(published="PUBLIC"))
+    return model.objects.filter(Q(user__username=username) | Q(published="PUBLIC"))
 
 
 def _album_with_cover(photos, cover):
@@ -19,8 +27,8 @@ def album_view(request, album_id=None):
         return redirect('home')
 
     profile = get_object_or_404(User, username=username)
-    albums = Album.objects.filter(published='PUBLIC')
-    photos = Photo.objects.filter(published='PUBLIC')
+    albums = (_public_or_user(Album, username))
+    photos = (_public_or_user(Photo, username))
 
     context = {
         'profile': profile,
@@ -31,9 +39,9 @@ def album_view(request, album_id=None):
         # import pdb; pdb.set_trace()
         album = get_object_or_404(Album, id=album_id)
         # import pdb; pdb.set_trace()
-        print(album)
-        context["photos"] = _album_with_cover(Photo.objects.filter(album__id=album.id).filter(published='PUBLIC'), album.cover)
+        context["photos"] = _album_with_cover(_public_or_user(Photo, username).filter(album__id=album.id), album.cover)
         context["album"] = album
+        context["cover"] = album.cover or sample(context['photos'], 1)[0]
         return render(request, 'imager_images/album.html', context)
     return render(request, 'imager_images/albums.html', context)
 
@@ -52,8 +60,8 @@ def photo_view(request, photo_id=None):
         return redirect('home')
 
     profile = get_object_or_404(User, username=username)
-    albums = Album.objects.filter(published='PUBLIC')
-    photos = Photo.objects.filter(published='PUBLIC')
+    albums = (_public_or_user(Album, username))
+    photos = (_public_or_user(Photo, username))
 
     context = {
         'profile': profile,

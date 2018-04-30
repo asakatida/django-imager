@@ -1,6 +1,7 @@
 
 .imager-background {
-    background: url('https://raw.githubusercontent.com/codefellows/seattle-201d29/master/06-JS_objects_and_the_DOM/lab/assets/salmon.png') no-repeat center center fixed;
+    background: /*url('https://raw.githubusercontent.com/codefellows/seattle-201d29/master/06-JS_objects_and_the_DOM/lab/assets/salmon.png') */
+    no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: 100%;

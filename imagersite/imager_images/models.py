@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from sorl.thumbnail import ImageField
+from random import sample
 
 
 class Photo(models.Model):
@@ -50,3 +51,7 @@ class Album(models.Model):
     def __str__(self):
         """Str."""
         return '{}'.format(self.title)
+
+    def get_cover(self):
+        """Get the signed cover or random."""
+        return (self.cover or sample(self.photos_set, 1)[0])

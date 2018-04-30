@@ -6,8 +6,8 @@
 <ul>
 {% for album in albums %}
 <li>
-    {% thumbnail album.cover.image "250x250" as im %}
-        <a href="{{album.link}}"><img src="{{ im.url }}"></a>
+    {% thumbnail album.get_cover.image "250x250" as im %}
+    <a href="{% url 'album' album.id %}"><img src="{{ im.url }}"></a>
     {% endthumbnail %}
     </li>
 {% endfor %}

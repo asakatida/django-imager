@@ -4,7 +4,8 @@ import factory
 
 
 class UserFactory(factory.django.DjangoModelFactory):
-    """ make factory """
+    """Make factory."""
+
     class Meta:
         model = User
 
@@ -13,6 +14,7 @@ class UserFactory(factory.django.DjangoModelFactory):
 
 
 def populate_profile(user, **kwargs):
+    """Populate profile."""
     user.profile.bio = kwargs['bio'] if 'bio' in kwargs else factory.Faker('paragraphs')
     user.profile.phone = kwargs['phone'] if 'phone' in kwargs else factory.Faker('phone_number')
     user.profile.locatiion = kwargs['locatiion'] if 'locatiion' in kwargs else factory.Faker('geo_coordinate')
@@ -51,6 +53,7 @@ class ProfileUnitTests(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """Set up class."""
         super(TestCase, cls)
         for _ in range(50):
             user = UserFactory.create()
@@ -58,14 +61,13 @@ class ProfileUnitTests(TestCase):
             user.save()
             populate_profile(user)
 
-
     @classmethod
     def tearDownClass(cls):
-        """ tear down class """
+        """Tear down class."""
         super(TestCase, cls)
         User.objects.all().delete()
 
     def test_user_can_see_its_profile(self):
-        """ test user profile view """
+        """Test user profile view."""
         one_user = User.objects.first()
         self.assertIsNotNone(one_user.profile)
