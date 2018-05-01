@@ -1,0 +1,24 @@
+language: python
+python:
+  - "3.6"
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c "create database $DB_NAME;" -U postgres
+
+
+script:
+  - python imager/manage.py migrate
+  - python imager/manage.py test imager
+  
+
+after_success:
+  - pip install coveralls
+  - coverage run imager/manage.py test imager
+  - coveralls
+  
+
+cache: pip
+
