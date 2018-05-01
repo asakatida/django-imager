@@ -6,9 +6,15 @@
     -moz-background-size: cover;
     background-size: 100%;
     -o-background-size: cover;
-   
-    
-    
-}
+   }
+
+   p {
+       background-color: antiquewhite;
+       display: inline;
+       box-shadow: 0 0 0 10px;
+       box-decoration-break: clone;
+       line-height: 2.2;
+       
+   }
 
 

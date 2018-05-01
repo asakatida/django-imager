@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from imager_images.models import Album, Photo
 from .models import ImagerProfile
+from random import sample
 
 
 def profile_view(request, username=None):
@@ -24,7 +25,8 @@ def profile_view(request, username=None):
     context = {
         'profile': profile,
         'albums': albums,
-        'photos': photos
+        'photos': photos,
+        'background': sample(list(Photo.objects.filter(published="PUBLIC")), 1)[0].image.url
     }
 
     return render(request, 'imager_profile/profile.html', context)

@@ -3,24 +3,35 @@
 {% load i18n %}
 
 {% block content %}
-<ul>
-{% for album in albums %}
-<li>
-    {% thumbnail album.cover.image "250x250" as im %}
-        <a href="{{album.link}}"><img src="{{ im.url }}"></a>
-    {% endthumbnail %}
-    </li>
-{% endfor %}
-</ul>
-<ul>
+<div class="container col-xs-12 col-sm-offset-2">
+        <div class="row align-items-start m-5">
+<p>Album</p>
+</div>
+<div class="row justify-content-start align-items-start m-5">
+        {% for album in albums %}
+            <div class="col-xs-6 col-md-auto col-sm-offset-2">
+                {% thumbnail album.get_cover.image "250x250" as im %}
+                <a href="{% url 'album' album.id %}"><img src="{{ im.url }}"></a>
+                {% endthumbnail %}
+                <p>{% firstof album.title  "No Title" %} </p>
+            </div>
+        {% endfor %}
+</div>  
+<div class="row justify-content-start align-items-start m-5">
+<p>Photos</p>
+</div>
     {% for photo in photos %}
-    <li>
-        {% thumbnail photo.thumb.image "250x250" as im %}
-        <a href="{{photo.link}}"><img src="{{ im.url }}"></a>
-        {% endthumbnail %}
-        </li>
+        <div class="justify-content-start row align-items-start m-5">
+
+        <div class="col-xs-6 col-md-auto col-sm-offset-2">
+            {% thumbnail photo.image "250x250" as im %}
+            <a href="{% url 'photo' photo.id %}"><img src="{{ im.url }}"></a>
+            {% endthumbnail %}
+        </div>
+        </div>
+
     {% endfor %}
-    </ul>
+</div>
     
 {% endblock content %}
 

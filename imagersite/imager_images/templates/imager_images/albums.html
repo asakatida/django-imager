@@ -3,14 +3,14 @@
 {% load i18n %}
 
 {% block content %}
-<ul>
+<div class="container col-xs-12 col-sm-offset-2">
 {% for album in albums %}
-<li>
-    {% thumbnail album.get_cover.image "250x250" as im %}
-    <a href="{% url 'album' album.id %}"><img src="{{ im.url }}"></a>
-    {% endthumbnail %}
-    </li>
+    <div class="col-xs-6 col-md-4 col-sm-offset-2">
+        {% thumbnail album.get_cover.image "250x250" as im %}
+        <a href="{% url 'album' album.id %}"><img src="{{ im.url }}"></a>
+        {% endthumbnail %}
+    </div>
 {% endfor %}
-</ul>
+</div>
     
 {% endblock content %}

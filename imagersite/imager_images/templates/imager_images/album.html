@@ -3,16 +3,16 @@
 {% load i18n %}
 
 {% block content %}
-<div class="col-xs-12 col-md-8">
+<div class="container col-xs-12 col-md-8 col-sm-offset-2">
 
 {% thumbnail album.cover.image "250x250" as im %}
         <a href="{% url 'photo' album.cover.id %}"><img src="{{ im.url }}"></a>
     {% endthumbnail %}
 </div>
 
-    <div class="col-xs-12">
+    <div class="container col-xs-12 col-sm-offset-2">
         {% for photo in photos %}
-        <div class="col-xs-6 col-md-4"></div>
+        <div class="col-xs-6 col-md-4 col-sm-offset-2"></div>
             {% thumbnail photo.image "250x250" as im %}
             <a href="{% url 'photo' photo.id %}"><img src="{{ im.url }}"></a>
             {% endthumbnail %}

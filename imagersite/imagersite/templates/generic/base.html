@@ -20,69 +20,97 @@
 
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
-<link rel="stylesheet" href="{% static 'cookies.css' %}">
+  <link rel="stylesheet" href="{% static 'cookies.css' %}">
   <title>Document</title>
 </head>
-<body class="img-fluid imager-background h-100" style="background: url('https://raw.githubusercontent.com/codefellows/seattle-201d29/master/06-JS_objects_and_the_DOM/lab/assets/salmon.png')no-repeat center center fixed"
+<body class="img-fluid imager-background h-100" style="background: url('{{ background }}')no-repeat center center fixed">
   
-  <div >
+  <div>
     
-  <nav>
-  <header>
-        
-{% if user.is_authenticated %}
-<div class="alert alert-success">
-        <h2>Welcome to the site,  {{ user.username }}</h2>
-</div>
-{% endif %}
-    {% block header %}
-    
-<a href="{% url 'home' %}">
-  <h1>Imager</h1>
-</a>
-<nav>
-</nav>
-  <div class="btn-group dropright">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Menu
-    </button>
-      <div class="dropdown-menu">
-        <ul>
-        <li><a href="{% url "home" %}">Home</a></li>
+    <nav>
+      <header>
+          
         {% if user.is_authenticated %}
-        <li><a href="{% url "profile" %}">Profile</a></li>
-        <li><a href="{% url "library" %}">Library</a></li>
-        <li><a href="{% url "albums" %}">Albums</a></li>
-        <li><a href="{% url "photos" %}">Photos</a></li>
-
-        {% if user.is_superuser %}
-        <li><a href="{% url "admin:index" %}">Admin</a></li>
+        <div class="alert alert-success">
+          <h2>Welcome to the site,  {{ user.username }}</h2>
+        </div>
         {% endif %}
-        <li><a href="{% url "auth_logout" %}">Logout</a></li>
-        {% else %}
-        <li><a href="{% url "registration_register" %}">Signup</a></li>
-        <li><a href="{% url "auth_login" %}">Signin</a></li>
-        {% endif %}
-      </ul>
-      </div>
-    </div>
+        {% block header %}
+    
+        <a href="{% url 'home' %}">
+          <h1>Imager</h1>
+        </a>
 
-{% endblock header %}
+
+        <div class ="container">
+          <div class="row">
+          <div class="col-xs-4 col-md-auto col-sm-offset-2">     
+           <div class="btn-group dropright">
+             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Menu
+             </button>
+             <div class="dropdown-menu">
+              <ul>
+                <li><a href="{% url "home" %}">Home</a></li>
+                 {% if user.is_authenticated %}
+                <li><a href="{% url "profile" %}">Profile</a></li>
+                <li><a href="{% url "library" %}">Library</a></li>
+                <li><a href="{% url "albums" %}">Albums</a></li>
+                <li><a href="{% url "photos" %}">Photos</a></li>
+
+           
+
+                 {% if user.is_superuser %}
+                <li><a href="{% url "admin:index" %}">Admin</a></li>
+                {% endif %}
+                 <li><a href="{% url "auth_logout" %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url "registration_register" %}">Signup</a></li>
+                <li><a href="{% url "auth_login" %}">Signin</a></li>
+                {% endif %}
+             </ul>
+
+            </div>
+          </div>
+          </div>
+          <div class="col-xs-8 col-md-auto col-sm-offset-2">
+              <a href="{% url "home" %}" class="btn btn-primary" role="button">Home</a>
+              {% if user.is_authenticated %}
+            <a href="{% url "profile" %}" class="btn btn-primary" role="button">Profile</a>
+            <a href="{% url "library" %}" class="btn btn-primary" role="button">Library</a>
+            <a href="{% url "albums" %}" class="btn btn-primary" role="button">Albums</a>
+            <a href="{% url "photos" %}" class="btn btn-primary" role="button">Photos</a>
+            {% if user.is_superuser %}
+            <a href="{% url "admin:index" %}" class="btn btn-primary" role="button">Admin</a>
+            {% endif %}
+            <a href="{% url "auth_logout" %}" class="btn btn-primary" role="button">Log out</a>
+            {% else %}
+            <a href="{% url "registration_register" %}" class="btn btn-primary" role="button">Sign up</a>
+            <a href="{% url "auth_login" %}" class="btn btn-primary" role="button">Sign In</a>
+            {% endif %}
+            </div>
+          </div>
+       </div>  
+        {% endblock header %}
 
     
     
-    {% if message %}
-    <h3> {{ message }}</h3>
-    {% endif %}
+        {% if message %}
+        <h3> {{ message }}</h3>
+        {% endif %}
 
-
-  </header>
+  
+      </header>
+    </nav>
+  </div>
   <main class="main-header">
 
     {% block content %}
     
     {% endblock content %}
-  </div>
-  </body>
+  </main>
+
+</body>
+
 
 </html>

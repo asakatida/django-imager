@@ -34,6 +34,7 @@ def album_view(request, album_id=None):
         'profile': profile,
         'albums': albums,
         'photos': photos,
+        'background': sample(list(Photo.objects.filter(published="PUBLIC")), 1)[0].image.url
     }
     if album_id:
         # import pdb; pdb.set_trace()
@@ -51,7 +52,8 @@ def photo_view(request, photo_id=None):
     if photo_id:
         photo = get_object_or_404(Photo, id=photo_id)
         context = {
-            'photo': {'thumb': photo, 'link': reverse('photo', args=[photo.id])}
+            'photo': photo,
+            'background': sample(list(Photo.objects.filter(published="PUBLIC")), 1)[0].image.url
         }
         return render(request, 'imager_images/photo.html', context)
     username = request.user.get_username()
@@ -65,9 +67,9 @@ def photo_view(request, photo_id=None):
 
     context = {
         'profile': profile,
-        'albums': [{'cover': album.cover, 'link': reverse('album',
-                    args=[album.id])} for album in albums],
-        'photos': [{'thumb': photo, 'link': reverse('photo', args=[photo.id])} for photo in photos]
+        'albums': albums,
+        'photos': photos,
+        'background': sample(list(Photo.objects.filter(published="PUBLIC")), 1)[0].image.url
     }
     return render(request, 'imager_images/photos.html', context)
 
@@ -85,8 +87,8 @@ def library_view(request):
 
     context = {
         'profile': profile,
-        'albums': [{'cover': album.cover, 'link': reverse('album',
-                    args=[album.id])} for album in albums],
-        'photos': [{'thumb': photo, 'link': reverse('photo', args=[photo.id])} for photo in photos]
+        'albums': albums,
+        'photos': photos,
+        'background': sample(list(Photo.objects.filter(published="PUBLIC")), 1)[0].image.url
     }
     return render(request, 'imager_images/library.html', context)
