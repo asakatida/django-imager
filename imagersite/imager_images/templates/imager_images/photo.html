@@ -12,7 +12,7 @@
 
 
 
-{% thumbnail photo.thumb.image "250x250" as im %}
+{% thumbnail photo.image "250x250" as im %}
 
 <a href="#" data-toggle="modal" data-target=".pop-up-2">
     <img src="{{ im.url }}" width="150" class="img-responsive img-rounded center-block" alt="">
@@ -26,7 +26,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
         <div class="modal-body">
-        <img src="{{photo.thumb.image.url}}" class="img-responsive img-rounded center-block" alt="">
+        <img src="{{photo.image.url}}" class="img-responsive img-rounded center-block" alt="">
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
