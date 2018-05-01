@@ -1,6 +1,9 @@
 # django-imager
 **Author** : Adam Grandquist and Jay Adams
 **Version**: 0.1.0
+[![Coverage Status](https://coveralls.io/repos/github/jayadams011/django-imager/badge.svg?branch=master)](https://coveralls.io/github/jayadams011/django-imager?branch=master)
+
+[![Build Status](https://travis-ci.org/jayadams011/django-imager.svg?branch=master)](https://travis-ci.org/jayadams011/django-imager)
 
 ## Overview
 

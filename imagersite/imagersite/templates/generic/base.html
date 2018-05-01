@@ -23,8 +23,11 @@
   <link rel="stylesheet" href="{% static 'cookies.css' %}">
   <title>Document</title>
 </head>
-<body class="img-fluid imager-background h-100" style="background: url('{{ background }}')no-repeat center center fixed">
-  
+{% if background %}
+<body class="img-fluid imager-background h-100" style="background: url('{{ background.image.url }}')no-repeat center center fixed">
+  {% else %}
+  <body class="img-fluid imager-background h-100" style="background: url('https://raw.githubusercontent.com/codefellows/seattle-201d29/master/06-JS_objects_and_the_DOM/lab/assets/salmon.png') no-repeat center center fixed">
+    {% endif %}
   <div>
     
     <nav>

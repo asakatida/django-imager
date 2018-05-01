@@ -34,7 +34,7 @@ def album_view(request, album_id=None):
         'profile': profile,
         'albums': albums,
         'photos': photos,
-        'background': sample(list(Photo.objects.filter(published="PUBLIC")), 1)[0].image.url
+        'background': sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
     }
     if album_id:
         # import pdb; pdb.set_trace()
@@ -42,7 +42,7 @@ def album_view(request, album_id=None):
         # import pdb; pdb.set_trace()
         context["photos"] = _album_with_cover(_public_or_user(Photo, username).filter(album__id=album.id), album.cover)
         context["album"] = album
-        context["cover"] = album.cover or sample(context['photos'], 1)[0]
+        context["cover"] = album.cover or sample(list(context['photos']) + [None], 1)[0]
         return render(request, 'imager_images/album.html', context)
     return render(request, 'imager_images/albums.html', context)
 
@@ -53,7 +53,7 @@ def photo_view(request, photo_id=None):
         photo = get_object_or_404(Photo, id=photo_id)
         context = {
             'photo': photo,
-            'background': sample(list(Photo.objects.filter(published="PUBLIC")), 1)[0].image.url
+            'background': sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
         }
         return render(request, 'imager_images/photo.html', context)
     username = request.user.get_username()
@@ -69,7 +69,7 @@ def photo_view(request, photo_id=None):
         'profile': profile,
         'albums': albums,
         'photos': photos,
-        'background': sample(list(Photo.objects.filter(published="PUBLIC")), 1)[0].image.url
+        'background': sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
     }
     return render(request, 'imager_images/photos.html', context)
 
@@ -89,6 +89,6 @@ def library_view(request):
         'profile': profile,
         'albums': albums,
         'photos': photos,
-        'background': sample(list(Photo.objects.filter(published="PUBLIC")), 1)[0].image.url
+        'background': sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
     }
     return render(request, 'imager_images/library.html', context)
