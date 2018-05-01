@@ -26,7 +26,7 @@ def profile_view(request, username=None):
         'profile': profile,
         'albums': albums,
         'photos': photos,
-        'background': sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0].image.url
+        'background': sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
     }
 
     return render(request, 'imager_profile/profile.html', context)

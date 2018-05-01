@@ -12,6 +12,6 @@ omit =
     */manage.py
     */wsgi.py
 source =
-    imager
+    imagersite
 [report]
 show_missing = True
