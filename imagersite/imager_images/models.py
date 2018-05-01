@@ -54,4 +54,4 @@ class Album(models.Model):
 
     def get_cover(self):
         """Get the signed cover or random."""
-        return (self.cover or sample(self.photos_set, 1)[0])
+        return (self.cover or sample(list(self.photos_set) + [None], 1)[0])
