@@ -40,7 +40,8 @@ def album_view(request, album_id=None):
         # import pdb; pdb.set_trace()
         album = get_object_or_404(Album, id=album_id)
         # import pdb; pdb.set_trace()
-        context["photos"] = _album_with_cover(_public_or_user(Photo, username).filter(album__id=album.id), album.cover)
+        context["photos"] = _album_with_cover(_public_or_user(Photo,
+                                              username).filter(album__id=album.id), album.cover)
         context["album"] = album
         context["cover"] = album.cover or sample(list(context['photos']) + [None], 1)[0]
         return render(request, 'imager_images/album.html', context)
