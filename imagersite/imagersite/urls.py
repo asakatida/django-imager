@@ -29,4 +29,7 @@ urlpatterns = [
     path('images/', include('imager_images.urls')),
     path('profile/', include('imager_profile.urls'))
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
