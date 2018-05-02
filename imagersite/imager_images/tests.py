@@ -187,3 +187,24 @@ class TestStoreRoutes(TestCase):
         users = list(User.objects.all())
         response = self.client.get(reverse_lazy('photos'))
         self.assertEqual(response.status_code, 302)
+
+    
+    def test_user_can_see_photos(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('library'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_photos_view_uses_base_template(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('library'))
+        self.assertTemplateUsed(response, 'generic/base.html')
+
+    def test_user_must_be_logged_in_to_see_photos(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        response = self.client.get(reverse_lazy('library'))
+        self.assertEqual(response.status_code, 302)
