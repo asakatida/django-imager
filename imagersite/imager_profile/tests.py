@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import ImagerProfile, User
 import factory
+from django.urls import reverse_lazy
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -71,3 +72,23 @@ class ProfileUnitTests(TestCase):
         """Test user profile view."""
         one_user = User.objects.first()
         self.assertIsNotNone(one_user.profile)
+
+    def test_user_can_see_other_user_view(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('named_profile', args=[users[1].username]))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_can_see_self_user_view(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('profile'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_must_be_logged_in_to_see_other_user_(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        response = self.client.get(reverse_lazy('named_profile', args=[users[1].username]))
+        self.assertEqual(response.status_code, 302)
