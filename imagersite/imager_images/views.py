@@ -50,6 +50,9 @@ def album_view(request, album_id=None):
 
 def photo_view(request, photo_id=None):
     """Photo View."""
+    username = request.user.get_username()
+    if username == '':
+        return redirect('home')
     if photo_id:
         photo = get_object_or_404(Photo, id=photo_id)
         context = {
@@ -57,11 +60,7 @@ def photo_view(request, photo_id=None):
             'background': sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
         }
         return render(request, 'imager_images/photo.html', context)
-    username = request.user.get_username()
     owner = True
-    if username == '':
-        return redirect('home')
-
     profile = get_object_or_404(User, username=username)
     albums = (_public_or_user(Album, username))
     photos = (_public_or_user(Photo, username))
