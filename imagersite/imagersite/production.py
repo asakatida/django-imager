@@ -1,4 +1,4 @@
 from .settings import *
 
 DEBUG = False
-TEMPLATE_DEBUG=
+TEMPLATE_DEBUG = False
