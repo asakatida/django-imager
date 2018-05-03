@@ -1,0 +1,16 @@
+[us-west]
+54.153.38.32
+
+[us-west:vars]
+ansible_ssh_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/django-class.pem.txt
+SECRET_KEY=($SECRET_KEY)
+DB_NAME=($DB_NAME)
+DB_USER=($DB_USER)
+DB_PASSWORD=($DB_PASSWORD)
+DB_HOST='django-imager-db.cq1xm3hzsgz3.us-west-1.rds.amazonaws.com'
+ALLOWED_HOSTS=($ALLOWED_HOSTS)
+EMAIL_HOST=($EMAIL_HOST)
+EMAIL_PORT=($EMAIL_PORT)
+EMAIL_HOST_USER=($EMAIL_HOST_USER)
+EMAIL_HOST_PASSWORD=($EMAIL_HOST_PASSWORD)
