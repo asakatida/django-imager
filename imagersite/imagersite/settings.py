@@ -26,8 +26,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', None)
 DEBUG = bool(os.environ.get('DEBUG', False))
 
 
-ALLOWED_HOSTS = ['.amazonaws.com']if not DEBUG else []
+# ALLOWED_HOSTS = ['.amazonaws.com']if not DEBUG else []
 
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
 
 
 # Application definition
