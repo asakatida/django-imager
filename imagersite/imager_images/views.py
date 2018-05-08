@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.db.models import Q
 from random import sample
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, DetailView
 
 
 class MixIn:
@@ -57,11 +57,11 @@ class UserNameMixIn:
         return super().get(request, *args, **kwargs)
 
 
-class AlbumView(UserNameMixIn, MixIn, TemplateView):
+class AlbumView(UserNameMixIn, MixIn, DetailView):
     """Class for Album view."""
 
     template_name = 'imager_images/album.html'
-    pk_url_kwarg = 'album_Id'
+    pk_url_kwarg = 'album_id'
     model = Album
 
     def get_content_data(self, *args, **kwargs):
@@ -78,11 +78,11 @@ class AlbumsView(UserNameMixIn, MixIn, TemplateView):
     template_name = 'imager_images/albums.html'
 
 
-class PhotoView(UserNameMixIn, MixIn, TemplateView):
+class PhotoView(UserNameMixIn, MixIn, DetailView):
     """Class for Photo view."""
 
     template_name = 'imager_images/photo.html'
-    pk_url_kwarg = 'photo_Id'
+    pk_url_kwarg = 'photo_id'
     model = Photo
 
 
