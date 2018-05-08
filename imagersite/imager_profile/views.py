@@ -6,12 +6,14 @@ from django.views.generic import TemplateView
 
 
 class ProfileView(TemplateView):
+    """Class for Profile view."""
+
     template_name = 'imager_profile/profile.html'
 
     def get_context_data(self, *args, **kwargs):
         """View for user profile."""
         context = super().get_context_data(**kwargs)
-        
+
         profile = get_object_or_404(ImagerProfile, user__username=self.username)
         albums = Album.objects.filter(user__username=self.username)
         photos = Photo.objects.filter(album__user__username=self.username)
@@ -28,6 +30,7 @@ class ProfileView(TemplateView):
         return context
 
     def get(self, request, *args, username=None, **kwargs):
+        """Get function."""
         if not self.request.user.is_authenticated:
             return redirect('home')
         self.owner = False
