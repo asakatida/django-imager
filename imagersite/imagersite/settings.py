@@ -21,17 +21,28 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', None)
+EMAIL_HOST = os.environ.get('EMAIL_HOST', None)
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER', None)
+# EMAIL_USE_SSL = False
+# EMAIL_TIMEOUT = os.environ.get('EMAIL_TIMEOUT', None)
+# EMAIL_SSL_KEYFILE = os.environ.get('EMAIL_SSL_KEYFILE', None)
+# EMAIL_SSL_CERTFILE = os.environ.get('EMAIL_SSL_CERTFILE', None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DEBUG', False))
 
 
-ALLOWED_HOSTS = ['.amazonaws.com']if not DEBUG else []
+# ALLOWED_HOSTS = ['.amazonaws.com']if not DEBUG else []
 
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
 
 
 # Application definition
-
+print(ALLOWED_HOSTS)
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -141,7 +152,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
 # Django Registration Settings
 ACCOUNT_ACTIVATION_DAYS = 1
 LOGIN_REDIRECT_URL = '/'
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# if DEBUG:
+#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# else:
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

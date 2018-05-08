@@ -147,3 +147,106 @@ class TestStoreRoutes(TestCase):
         albums = response.context['albums']
         for album in albums:
             self.assertEqual(album.published, 'PUBLIC')
+
+    def test_user_can_see_photo_one(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('photo', args=[Photo.objects.first().id]))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_photo_view_uses_base_template(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('photo', args=[Photo.objects.first().id]))
+        self.assertTemplateUsed(response, 'generic/base.html')
+
+    def test_user_must_be_logged_in_to_see_photo(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        response = self.client.get(reverse_lazy('photo', args=[Photo.objects.first().id]))
+        self.assertEqual(response.status_code, 302)
+
+    def test_user_can_see_photos(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('photos'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_photos_view_uses_base_template(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('photos'))
+        self.assertTemplateUsed(response, 'generic/base.html')
+
+    def test_user_must_be_logged_in_to_see_photos(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        response = self.client.get(reverse_lazy('photos'))
+        self.assertEqual(response.status_code, 302)
+
+    def test_user_can_see_library(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('library'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_library_view_uses_base_template(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('library'))
+        self.assertTemplateUsed(response, 'generic/base.html')
+
+    def test_user_must_be_logged_in_to_see_library(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        response = self.client.get(reverse_lazy('library'))
+        self.assertEqual(response.status_code, 302)
+
+    def test_user_can_see_album_one(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('album', args=[Album.objects.first().id]))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_album_view_uses_base_template(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('album', args=[Album.objects.first().id]))
+        self.assertTemplateUsed(response, 'generic/base.html')
+
+    def test_user_must_be_logged_in_to_see_album(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        response = self.client.get(reverse_lazy('album', args=[Album.objects.first().id]))
+        self.assertEqual(response.status_code, 302)
+
+    def test_user_can_see_albums(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('albums'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_albums_view_uses_base_template(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        self.client.force_login(users[0])
+        response = self.client.get(reverse_lazy('albums'))
+        self.assertTemplateUsed(response, 'generic/base.html')
+
+    def test_user_must_be_logged_in_to_see_albums(self):
+        """Test id user can see other user view."""
+        users = list(User.objects.all())
+        response = self.client.get(reverse_lazy('albums'))
+        self.assertEqual(response.status_code, 302)
+
+
+    
