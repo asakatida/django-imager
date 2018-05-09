@@ -24,7 +24,7 @@ class MixIn:
             return set(photos) | {cover}
         return photos
 
-    def get_context_data(self, *args, **kwargs):
+    def get_context_data(self, **kwargs):
         """Photo View."""
         context = super().get_context_data(**kwargs)
 
@@ -36,10 +36,6 @@ class MixIn:
         context['albums'] = albums
         context['photos'] = photos
         context['background'] = sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
-        # if self.photo_id:
-        #     photo = get_object_or_404(Photo, id=self.photo_id)
-        #     context['photo'] = photo
-        #     self.template_name = 'imager_images/photo.html'
 
         return context
 
@@ -65,7 +61,7 @@ class AlbumView(UserNameMixIn, MixIn, DetailView):
     pk_url_kwarg = 'album_id'
     model = Album
 
-    def get_content_data(self, *args, **kwargs):
+    def get_context_data(self, **kwargs):
         """Album view."""
         context = super().get_context_data(**kwargs)
         context['photos'] = self._album_with_cover(context['photos'].filter(album__id=context['album'].id), context['album'].cover)
@@ -98,7 +94,7 @@ class LibraryView(UserNameMixIn, MixIn, TemplateView):
 
     template_name = 'imager_images/library.html'
 
-    def get_context_data(self, *args, **kwargs):
+    def get_context_data(self, **kwargs):
         """View for library."""
         context = super().get_context_data(**kwargs)
         albums = Album.objects.filter(user__username=self.username)
