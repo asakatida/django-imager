@@ -24,7 +24,7 @@ class MixIn:
             return set(photos) | {cover}
         return photos
 
-    def add_imager_albums(self, context):
+    def get_context_data(self, *args, **kwargs):
         """Photo View."""
         context = super().get_context_data(**kwargs)
 
