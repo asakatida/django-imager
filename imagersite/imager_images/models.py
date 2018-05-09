@@ -31,7 +31,7 @@ class Photo(models.Model):
 class Album(models.Model):
     """Album."""
 
-    user = models.OneToOneField(User, related_name='album', on_delete=models.CASCADE, null=False)
+    user = models.ForeignKey(User, related_name='album', on_delete=models.CASCADE, null=False)
     photos = models.ManyToManyField(Photo, related_name='album')
     title = models.CharField(max_length=250, default='Untitled')
     description = models.TextField(blank=True, null=True)
