@@ -1,8 +1,12 @@
 {% extends "generic/base.html" %}
 {% load thumbnail %}
 {% load i18n %}
+{% load bootstrap3 %}
+
 
 {% block content %}
+{% bootstrap_button "Add New Photo" href=photo_add %}
+{% bootstrap_button "Add New Album" href=album_add %}
 <div class="container col-xs-12 col-sm-offset-2">
         <div class="row align-items-start m-5">
 <p>Album</p>

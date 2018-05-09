@@ -1,1 +1,16 @@
-{% extends "generic/base.html" %}
+{% extends 'generic/base.html' %}
+{# Load the tag library #}
+{% load bootstrap3 %}
+{% block content %}
+<div class="login-form container">
+  <form method="post" enctype="multipart/form-data">
+    {% bootstrap_form form %}
+    {% csrf_token %}
+
+    
+    {% buttons %}
+    <input type="submit" value="Save" ></input>
+    {% endbuttons %}
+  </form>
+</div>
+{% endblock %}

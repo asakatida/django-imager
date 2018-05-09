@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from .models import Album, Photo
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.db.models import Q
 from random import sample
 from django.views.generic import TemplateView, CreateView, DetailView
+from .forms import AlbumForm, PhotoForm
 
 
 class MixIn:
@@ -23,7 +24,7 @@ class MixIn:
             return set(photos) | {cover}
         return photos
 
-    def get_context_data(self, *args, **kwargs):
+    def add_imager_albums(self, context):
         """Photo View."""
         context = super().get_context_data(**kwargs)
 
@@ -103,6 +104,8 @@ class LibraryView(UserNameMixIn, MixIn, TemplateView):
         albums = Album.objects.filter(user__username=self.username)
         photos = Photo.objects.filter(album__user__username=self.username)
 
+        context['album_add'] = reverse('albums_add')
+        context['photo_add'] = reverse('photos_add')
         context['albums'] = albums
         context['photos'] = photos
         return context
@@ -111,9 +114,10 @@ class LibraryView(UserNameMixIn, MixIn, TemplateView):
 class AddPhotoView(CreateView):
     """Class for Photo view."""
 
+    form_class = PhotoForm
     model = Photo
     template_name = 'imager_images/add_photo.html'
-    success_url = 'library'
+    success_url = reverse_lazy('library')
 
     def get(self, *args, **kwargs):
         """Get method."""
@@ -144,9 +148,10 @@ class AddPhotoView(CreateView):
 class AddAlbumView(CreateView):
     """Class for Album view."""
 
+    form_class = AlbumForm
     model = Album
     template_name = 'imager_images/add_album.html'
-    success_url = 'library'
+    success_url = reverse_lazy('library')
 
     def get(self, *args, **kwargs):
         """Get method."""

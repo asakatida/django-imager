@@ -8,10 +8,24 @@ class AlbumForm(ModelForm):
 
     class Meta:
         model = Album
-        fields = ['cover', 'name', 'description', 'published']
+        fields = ['cover', 'photos', 'title', 'description', 'published']
 
     def __init__(self, *args, **kwargs):
         """Self init."""
         username = kwargs.pop('username')
         super().__init__(*args, **kwargs)
-        self.fields['cover'].queryset = Photo.objects.filter(product__user__username=username)
+        # self.fields['cover'].queryset = Photo.objects.filter(album__user__username=username)
+        # self.fields['photos'].queryset = Photo.objects.filter(album__user__username=username)
+
+
+class PhotoForm(ModelForm):
+    """Class for Photo form."""
+
+    class Meta:
+        model = Photo
+        fields = ['title', 'description', 'image', 'published']
+
+    def __init__(self, *args, **kwargs):
+        """Self init."""
+        username = kwargs.pop('username')
+        super().__init__(*args, **kwargs)
