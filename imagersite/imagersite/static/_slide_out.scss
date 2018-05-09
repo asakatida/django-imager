@@ -1,0 +1,40 @@
+
+$box-width: 300px;
+$black: #000;
+$white: #fff;
+$gutter-std: 20px;
+$gutter-sm: $gutter-std / 2;
+
+@mixin float-menu{
+    position: absolute;
+    width: 40px;
+    height: 300px;
+    background: #fff;
+    transition: 500ms all;
+    h3{
+        writing-mode: vertical-rl;
+        text-orientation: sideways;
+       }
+    div{
+        opacity: 0;
+    }
+    &:hover {
+     width: 100px;
+     h3{
+        opacity: 0;
+    }
+    div{
+        opacity: 1;
+    }
+}
+}
+
+
+.settings-menu{
+    @include float-menu;
+    right: 0;
+}
+.menu-left{
+    @include float-menu;
+    left: 0;
+}

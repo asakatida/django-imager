@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+SASS_PROCESSOR_ENABLED = True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,7 +40,7 @@ DEBUG = bool(os.environ.get('DEBUG', False))
 # ALLOWED_HOSTS = ['.amazonaws.com']if not DEBUG else []
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
-
+SASS_PRECISION = 8
 
 # Application definition
 INSTALLED_APPS = [
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     'imager_profile',
     'imager_images',
     'bootstrap3',
+    'sass_processor',
 ]
 
 MIDDLEWARE = [
@@ -147,6 +149,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
 
 # Django Registration Settings
 ACCOUNT_ACTIVATION_DAYS = 1
