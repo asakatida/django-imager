@@ -29,3 +29,30 @@ class PhotoForm(ModelForm):
         """Self init."""
         username = kwargs.pop('username')
         super().__init__(*args, **kwargs)
+
+
+class PhotoEditForm(ModelForm):
+    """Class for Photo form."""
+
+    class Meta:
+        model = Photo
+        fields = ['title', 'description', 'image', 'published']
+
+    def __init__(self, *args, **kwargs):
+        """Self init."""
+        username = kwargs.pop('username')
+        super().__init__(*args, **kwargs)
+
+
+class AlbumEditForm(ModelForm):
+    """Class for Photo form."""
+
+    class Meta:
+        model = Album
+        fields = ['cover', 'photos', 'title', 'description', 'published']
+
+    def __init__(self, *args, **kwargs):
+        """Self init."""
+        username = kwargs.pop('username')
+        super().__init__(*args, **kwargs)
+        
