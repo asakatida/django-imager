@@ -11,7 +11,7 @@
 {% if user.is_authenticated %}
 <section class="profile-container container">
         {% if profile.user.username == user.username %}
-        <a href="{% url "settings" username=user.username %}">{% trans "Edit Profile" %}</a>
+        <a href="{% url "settings" %}">{% trans "Edit Profile" %}</a>
         
     <section class="settings-container container">
         <button type="button" class="navbar-toggle" data-toggle="sidebar" data-target=".sidebar">
