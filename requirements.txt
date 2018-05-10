@@ -7,3 +7,6 @@ Pillow
 psycopg2-binary          
 sorl-thumbnail          
 model_mommy
+libsass 
+django-compressor
+django-sass-processor

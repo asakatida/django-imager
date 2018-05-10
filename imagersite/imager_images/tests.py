@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from model_mommy import mommy
 import tempfile
 from django.urls import reverse_lazy
+from .forms import AlbumForm, PhotoForm
 
 
 fake = faker.Faker()
@@ -75,7 +76,7 @@ class ProfileUnitTests(TestCase):
         self.image = image
 
 
-class TestStoreRoutes(TestCase):
+class ImageTests(TestCase):
     """Testing Routes."""
 
     @classmethod
@@ -98,6 +99,9 @@ class TestStoreRoutes(TestCase):
         """Tear Down Class."""
         User.objects.all().delete()
         super().tearDownClass()
+
+
+class ImageViewTests(ImageTests): 
 
     def test_200_status_on_authenticated_request_to_store(self):
         """Test 200 status."""
@@ -249,4 +253,36 @@ class TestStoreRoutes(TestCase):
         self.assertEqual(response.status_code, 302)
 
 
-    
+class ImageFormTests(ImageTests):
+    """Image form tests class."""
+
+    def test_init_album(self):
+        """Test image form."""
+        user = list(User.objects.all())[0]
+        AlbumForm(username=user.username)
+
+    def test_init_photo(self):
+        """Test image form."""
+        user = list(User.objects.all())[0]
+        PhotoForm(username=user.username)
+
+    # def test_valid_data_album(self):
+    #     """Test image form."""
+    #     user = list(User.objects.all())[0]
+    #     form = AlbumForm({'description': '', 'cover': Photo.objects.first(), 'title': 'Title', 'published': Photo.objects.first().published, 'photos': []}, username=user.username)
+    #     form.cover = Photo.objects.first()
+    #     form.photos = [Photo.objects.first()]
+    #     print(form.errors)
+    #     self.assertTrue(form.is_valid())
+
+    def test_invalid_data_album(self):
+        """Test image form."""
+        user = list(User.objects.all())[0]
+        form = AlbumForm({}, username=user.username)
+        self.assertFalse(form.is_valid())
+
+    def test_invalid_data_photo(self):
+        """Test image form."""
+        user = list(User.objects.all())[0]
+        form = PhotoForm({}, username=user.username)
+        self.assertFalse(form.is_valid())
