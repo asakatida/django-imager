@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from imager_images.models import Album, Photo
 from .models import ImagerProfile
 from random import sample
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import ProfileEditForm
+from django.urls import reverse_lazy
 
 
 class ProfileView(TemplateView):
@@ -46,4 +49,35 @@ class ProfileView(TemplateView):
                 return redirect('home')
         self.username = username
         return super().get(request, *args, username=username, **kwargs)
+
+
+class ProfileEditView(LoginRequiredMixin, UpdateView):
+    template_name = 'shopper_profile/profile_edit.html'
+    model = ImagerProfile
+    form_class = ProfileEditForm
+    login_url = reverse_lazy('auth_login')
+    success_url = reverse_lazy('profile')
+    slug_url_kwarg = 'username'
+    slug_field = 'user__username'
+
+    def get(self, *args, **kwargs):
+        self.kwargs['username'] = self.request.user.get_username()
+        return super().get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        self.kwargs['username'] = self.request.user.get_username()
+        return super().post(*args, **kwargs)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'username': self.request.user.get_username()})
+        return kwargs
+
+    def form_valid(self, form):
+        # import pdb; pdb.set_trace()
+        form.instance.user.email = form.data['email']
+        form.instance.user.first_name = form.data['first_name']
+        form.instance.user.last_name = form.data['last_name']
+        form.instance.user.save()
+        return super().form_valid(form)
 

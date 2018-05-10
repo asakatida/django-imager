@@ -17,8 +17,8 @@
                 {% thumbnail album.get_cover.image "250x250" as im %}
                 <a href="{% url 'album' album.id %}"><img src="{{ im.url }}"></a>
                 {% endthumbnail %}
-                <p><a href="{% url 'albums_edit' album.id %}">Edit</a></p>
-                <p>{% firstof album.title  "No Title" %} </p>
+                <p><a href="{% url 'albums_edit' album.id %}">Edit</a>
+                {% firstof album.title  "No Title" %} </p>
             </div>
         {% endfor %}
 </div>  
@@ -32,7 +32,7 @@
             {% thumbnail photo.image "250x250" as im %}
             <a href="{% url 'photo' photo.id %}"><img src="{{ im.url }}"></a>
             {% endthumbnail %}
-            <p><a href="{% url 'photos_edit' photo.id %}">Edit</a></p>
+            <p><a href="{% url 'photos_edit' photo.id %}">Edit</a>{% firstof photo.title  "No Title" %}</p>
         </div>
         </div>
 

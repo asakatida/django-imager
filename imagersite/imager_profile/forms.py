@@ -1,4 +1,4 @@
-from .models import ShopperProfile
+from .models import ImagerProfile
 from django.contrib.auth.models import User
 from django.forms import ModelForm, CharField, widgets
 
@@ -19,8 +19,8 @@ class ProfileEditForm(ModelForm):
         required=False)
 
     class Meta:
-        model = ShopperProfile
-        fields = ['first_name', 'last_name', 'email', 'street', 'city', 'state', 'zip_code', 'cell', 'home']
+        model = ImagerProfile
+        fields = ['photostyles', 'services', 'camera', 'fee', 'website', 'locatiion', 'phone', 'bio']
 
     def __init__(self, *args, **kwargs):
         """Init."""

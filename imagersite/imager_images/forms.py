@@ -31,12 +31,12 @@ class PhotoForm(ModelForm):
         super().__init__(*args, **kwargs)
 
 
-class PhotoEditForm(ModelForm):
+class EditPhotoForm(ModelForm):
     """Class for Photo form."""
 
     class Meta:
         model = Photo
-        fields = ['title', 'description', 'image', 'published']
+        fields = ['title', 'description', 'published']
 
     def __init__(self, *args, **kwargs):
         """Self init."""
@@ -44,7 +44,7 @@ class PhotoEditForm(ModelForm):
         super().__init__(*args, **kwargs)
 
 
-class AlbumEditForm(ModelForm):
+class EditAlbumForm(ModelForm):
     """Class for Photo form."""
 
     class Meta:

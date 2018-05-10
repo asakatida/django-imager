@@ -5,9 +5,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.db.models import Q
 from random import sample
-from django.views.generic import TemplateView, CreateView, DetailView, UpdateView
+from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import AlbumForm, PhotoForm, EditAlbumView, EditPhotoView
+from .forms import AlbumForm, PhotoForm, EditAlbumForm, EditPhotoForm
 
 
 class UserNameMixIn:
@@ -24,7 +24,7 @@ class UserNameMixIn:
         return super().get(request, *args, **kwargs)
 
 
-class AlbumView(UserNameMixIn, MixIn, DetailView):
+class AlbumView(UserNameMixIn, DetailView):
     """Class for Album view."""
 
     template_name = 'imager_images/album.html'
@@ -278,7 +278,7 @@ class EditAlbumView(LoginRequiredMixin, UpdateView):
 
     template_name = 'imager_images/edit_album.html'
     model = Album
-    form_class = AlbumEditForm
+    form_class = EditAlbumForm
     login_url = reverse_lazy('auth_login')
     success_url = reverse_lazy('library')
     slug_url_kwarg = 'album_id'
@@ -308,7 +308,7 @@ class EditAlbumView(LoginRequiredMixin, UpdateView):
 class EditPhotoView(LoginRequiredMixin, UpdateView):
     template_name = 'imager_images/edit_photo.html'
     model = Photo
-    form_class = PhotoEditForm
+    form_class = EditPhotoForm
     login_url = reverse_lazy('auth_login')
     success_url = reverse_lazy('library')
     slug_url_kwarg = 'photo_id'
