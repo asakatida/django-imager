@@ -18,13 +18,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import home_view
+from .views import HomeView
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view, name='home'),
+    path('', HomeView.as_view(), name='home'),
     path('accounts/', include('registration.backends.hmac.urls')),
     path('images/', include('imager_images.urls')),
     path('profile/', include('imager_profile.urls'))
