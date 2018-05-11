@@ -55,7 +55,7 @@ class ProfileView(TemplateView):
 class ProfileEditView(LoginRequiredMixin, UpdateView):
     """Profile Edit Veiw."""
 
-    template_name = 'shopper_profile/profile_edit.html'
+    template_name = 'imager_profile/profile.html'
     model = ImagerProfile
     form_class = ProfileEditForm
     login_url = reverse_lazy('auth_login')

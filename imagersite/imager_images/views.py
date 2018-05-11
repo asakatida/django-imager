@@ -211,6 +211,7 @@ class AddPhotoView(CreateView):
     form_class = PhotoForm
     model = Photo
     template_name = 'imager_images/add_photo.html'
+    pk_url_kwarg = 'photo_id'
     success_url = reverse_lazy('library')
 
     def get(self, *args, **kwargs):
@@ -238,6 +239,9 @@ class AddPhotoView(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+    def get_queryset(self):
+        return self.model.objects.filter(album__user__username=self.request.user.get_username())
+
 
 class AddAlbumView(CreateView):
     """Class for Album view."""
@@ -245,6 +249,7 @@ class AddAlbumView(CreateView):
     form_class = AlbumForm
     model = Album
     template_name = 'imager_images/add_album.html'
+    pk_url_kwarg = 'album_id'
     success_url = reverse_lazy('library')
 
     def get(self, *args, **kwargs):
@@ -272,6 +277,9 @@ class AddAlbumView(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+    def get_queryset(self):
+        return self.model.objects.filter(user__username=self.request.user.get_username())
+
 
 class EditAlbumView(LoginRequiredMixin, UpdateView):
     """Edit album view."""
@@ -279,6 +287,7 @@ class EditAlbumView(LoginRequiredMixin, UpdateView):
     template_name = 'imager_images/edit_album.html'
     model = Album
     form_class = EditAlbumForm
+    pk_url_kwarg = 'album_id'
     login_url = reverse_lazy('auth_login')
     success_url = reverse_lazy('library')
     slug_url_kwarg = 'album_id'
@@ -295,39 +304,52 @@ class EditAlbumView(LoginRequiredMixin, UpdateView):
         return super().post(*args, **kwargs)
 
     def get_form_kwargs(self):
+        """Get form kwargs."""
         kwargs = super().get_form_kwargs()
         kwargs.update({'username': self.request.user.get_username()})
         return kwargs
 
     def form_valid(self, form):
-        # import pdb; pdb.set_trace()
-
+        """Validate form."""
         return super().form_valid(form)
+
+    def get_queryset(self):
+        """Get Query set."""
+        return self.model.objects.filter(user__username=self.request.user.get_username())
 
 
 class EditPhotoView(LoginRequiredMixin, UpdateView):
+    """Edit class."""
+
     template_name = 'imager_images/edit_photo.html'
     model = Photo
     form_class = EditPhotoForm
+    pk_url_kwarg = 'photo_id'
     login_url = reverse_lazy('auth_login')
     success_url = reverse_lazy('library')
     slug_url_kwarg = 'photo_id'
     slug_field = 'id'
 
     def get(self, *args, **kwargs):
+        """Get."""
         self.kwargs['username'] = self.request.user.get_username()
         return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
+        """Post."""
         self.kwargs['username'] = self.request.user.get_username()
         return super().post(*args, **kwargs)
 
     def get_form_kwargs(self):
+        """Get."""
         kwargs = super().get_form_kwargs()
         kwargs.update({'username': self.request.user.get_username()})
         return kwargs
 
     def form_valid(self, form):
-        # import pdb; pdb.set_trace()
-        
+        """Validate form."""
         return super().form_valid(form)
+
+    def get_queryset(self):
+        """Get Q set."""
+        return self.model.objects.filter(album__user__username=self.request.user.get_username())

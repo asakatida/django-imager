@@ -29,4 +29,3 @@ class ProfileEditForm(ModelForm):
         self.fields['email'].initial = User.objects.get(username=username).email
         self.fields['first_name'].initial = User.objects.get(username=username).first_name
         self.fields['last_name'].initial = User.objects.get(username=username).last_name
-        self.fields['street'].initial = ShopperProfile.objects.get(user__username=username).street
