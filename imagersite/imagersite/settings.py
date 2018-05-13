@@ -33,7 +33,7 @@ DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER', None)
 # EMAIL_SSL_CERTFILE = os.environ.get('EMAIL_SSL_CERTFILE', None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DEBUG', False))
+DEBUG = os.environ.get('DEBUG', 'false').lower().strip() != 'false'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
 SASS_PRECISION = 8
