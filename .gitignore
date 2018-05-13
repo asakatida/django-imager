@@ -1,5 +1,8 @@
 
-# Created by https://www.gitignore.io/api/macos,python,django,visualstudiocode
+# Created by https://www.gitignore.io/api/ansible,django,macos,python,visualstudiocode
+
+### Ansible ###
+*.retry
 
 ### Django ###
 *.log
@@ -118,14 +121,14 @@ celerybeat-schedule.*
 *.sage.py
 
 # Environments
-*.env
+.env
 .venv
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
-MEDIA
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -148,4 +151,8 @@ MEDIA
 .history
 
 
-# End of https://www.gitignore.io/api/macos,python,django,visualstudiocode
+# End of https://www.gitignore.io/api/ansible,django,macos,python,visualstudiocode
+
+
+hosts
+secret.*
