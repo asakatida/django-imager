@@ -52,12 +52,13 @@ table {
   background-size: 100%;
   -o-background-size: cover; }
 
-p {
+p, .imager-text-tag {
   background-color: antiquewhite;
-  display: inline;
+  display: block;
   box-shadow: 0 0 0 10px;
   box-decoration-break: clone;
-  line-height: 2.2; }
+  line-height: 2.2;
+  margin: 12px; }
 
 h1 {
   text-emphasis-color: white;
