@@ -27,7 +27,8 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('accounts/', include('registration.backends.hmac.urls')),
     path('images/', include('imager_images.urls')),
-    path('profile/', include('imager_profile.urls'))
+    path('profile/', include('imager_profile.urls')),
+    path('api/v1/', include('imager_api.urls'))
 
 ]
 

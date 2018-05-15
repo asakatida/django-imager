@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'sorl.thumbnail',
     'imagersite',
+    'rest_framework',
     'imager_profile',
     'imager_images',
     'bootstrap3',
