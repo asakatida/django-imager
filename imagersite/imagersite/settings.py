@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'imager_profile',
     'imagersite',
     'multiselectfield',
+    'rest_framework',
     'sass_processor',
     'sorl.thumbnail',
 ]

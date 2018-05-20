@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from imager_images.models import Album, Photo
 from .models import ImagerProfile
 from random import sample
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import ProfileEditForm
+from django.urls import reverse_lazy
 
 
 class ProfileView(TemplateView):
@@ -25,7 +28,8 @@ class ProfileView(TemplateView):
         context['profile'] = profile
         context['albums'] = albums
         context['photos'] = photos
-        context['background'] = sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
+        context['background'] = sample(list(Photo.objects.filter(published="PUBLIC")) + [None],
+                                       1)[0]
 
         return context
 
@@ -47,3 +51,38 @@ class ProfileView(TemplateView):
         self.username = username
         return super().get(request, *args, username=username, **kwargs)
 
+
+class ProfileEditView(LoginRequiredMixin, UpdateView):
+    """Profile Edit Veiw."""
+
+    template_name = 'imager_profile/profile.html'
+    model = ImagerProfile
+    form_class = ProfileEditForm
+    login_url = reverse_lazy('auth_login')
+    success_url = reverse_lazy('profile')
+    slug_url_kwarg = 'username'
+    slug_field = 'user__username'
+
+    def get(self, *args, **kwargs):
+        """Get method."""
+        self.kwargs['username'] = self.request.user.get_username()
+        return super().get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        """Post method."""
+        self.kwargs['username'] = self.request.user.get_username()
+        return super().post(*args, **kwargs)
+
+    def get_form_kwargs(self):
+        """Get from arg."""
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'username': self.request.user.get_username()})
+        return kwargs
+
+    def form_valid(self, form):
+        """From validation."""
+        form.instance.user.email = form.data['email']
+        form.instance.user.first_name = form.data['first_name']
+        form.instance.user.last_name = form.data['last_name']
+        form.instance.user.save()
+        return super().form_valid(form)
