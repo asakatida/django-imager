@@ -1,6 +1,15 @@
 from django.urls import path
-from .views import LibraryView, PhotoView, AlbumView, AddPhotoView, AddAlbumView, AlbumsView, PhotosView, EditPhotoView, EditAlbumView
 
+from .views import (
+    AddAlbumView,
+    AddPhotoView,
+    AlbumsView,
+    AlbumView,
+    EditAlbumView,
+    EditPhotoView,
+    LibraryView,
+    PhotosView,
+    PhotoView)
 
 urlpatterns = [
     path('photos/add', AddPhotoView.as_view(), name='photos_add'),
@@ -12,5 +21,5 @@ urlpatterns = [
     path('photos', PhotosView.as_view(), name='photos'),
     path('albums', AlbumsView.as_view(), name='albums'),
     path('albums/<str:album_id>', AlbumView.as_view(), name='album'),
-    
+
 ]

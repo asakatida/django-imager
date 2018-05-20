@@ -1,12 +1,10 @@
-from django.shortcuts import render
-from django.contrib.auth.models import User
-from .models import Album, Photo
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse, reverse_lazy
-from django.db.models import Q
 from random import sample
-from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, ListView
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
+from django.db.models import Q
+from django.views.generic import CreateView, DetailView, UpdateView, ListView
+
 from .forms import AlbumForm, PhotoForm, EditAlbumForm, EditPhotoForm
 
 
@@ -54,7 +52,8 @@ class AlbumView(UserNameMixIn, DetailView):
         context['profile'] = profile
         context['albums'] = albums
         context['photos'] = photos
-        context['background'] = sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
+        if photos:
+            context['background'] = sample(photos, 1)[0]
         context['photos'] = self._album_with_cover(context['photos'].filter(album__id=context['album'].id), context['album'].cover)
         context['cover'] = context['album'].cover or sample(list(context['photos']) + [None], 1)[0]
 
@@ -90,7 +89,8 @@ class AlbumsView(UserNameMixIn, ListView):
         context['profile'] = profile
         context['albums'] = albums
         context['photos'] = photos
-        context['background'] = sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
+        if photos:
+            context['background'] = sample(photos, 1)[0]
 
         return context
 
@@ -100,7 +100,7 @@ class PhotoView(UserNameMixIn, DetailView):
 
     template_name = 'imager_images/photo.html'
     pk_url_kwarg = 'photo_id'
-    model = Photo
+    model = 'Photo'
 
 
     @staticmethod
@@ -126,7 +126,8 @@ class PhotoView(UserNameMixIn, DetailView):
         context['profile'] = profile
         context['albums'] = albums
         context['photos'] = photos
-        context['background'] = sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
+        if photos:
+            context['background'] = sample(photos, 1)[0]
 
         return context
 
@@ -160,7 +161,8 @@ class PhotosView(UserNameMixIn, ListView):
         context['profile'] = profile
         context['albums'] = albums
         context['photos'] = photos
-        context['background'] = sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
+        if photos:
+            context['background'] = sample(photos, 1)[0]
 
         return context
 
@@ -194,7 +196,8 @@ class LibraryView(UserNameMixIn, ListView):
         context['profile'] = profile
         context['albums'] = albums
         context['photos'] = photos
-        context['background'] = sample(list(Photo.objects.filter(published="PUBLIC")) + [None], 1)[0]
+        if photos:
+            context['background'] = sample(photos, 1)[0]
         albums = Album.objects.filter(user__username=self.username)
         photos = Photo.objects.filter(album__user__username=self.username)
 
@@ -209,7 +212,7 @@ class AddPhotoView(CreateView):
     """Class for Photo view."""
 
     form_class = PhotoForm
-    model = Photo
+    model = 'Photo'
     template_name = 'imager_images/add_photo.html'
     pk_url_kwarg = 'photo_id'
     success_url = reverse_lazy('library')
@@ -247,7 +250,7 @@ class AddAlbumView(CreateView):
     """Class for Album view."""
 
     form_class = AlbumForm
-    model = Album
+    model = 'Album'
     template_name = 'imager_images/add_album.html'
     pk_url_kwarg = 'album_id'
     success_url = reverse_lazy('library')

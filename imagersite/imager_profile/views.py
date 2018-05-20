@@ -1,6 +1,3 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from imager_images.models import Album, Photo
-from .models import ImagerProfile
 from random import sample
 from django.views.generic import TemplateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,8 +25,8 @@ class ProfileView(TemplateView):
         context['profile'] = profile
         context['albums'] = albums
         context['photos'] = photos
-        context['background'] = sample(list(Photo.objects.filter(published="PUBLIC")) + [None],
-                                       1)[0]
+        if photos:
+            context['background'] = sample(photos, 1)[0]
 
         return context
 
