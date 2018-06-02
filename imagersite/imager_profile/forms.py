@@ -1,6 +1,7 @@
-from .models import ImagerProfile
 from django.contrib.auth.models import User
-from django.forms import ModelForm, CharField, widgets
+from django.forms import CharField, ModelForm, widgets
+
+from .models import ImagerProfile
 
 
 class ProfileEditForm(ModelForm):

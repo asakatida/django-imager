@@ -38,16 +38,17 @@ SASS_PROCESSOR_ENABLED = True
 
 # Application definition
 INSTALLED_APPS = [
-    'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
+    'imager_api',
     'imager_images',
     'imager_profile',
     'imagersite',
+    'material',
     'multiselectfield',
     'rest_framework',
     'sass_processor',

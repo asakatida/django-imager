@@ -2,5 +2,8 @@ from django.apps import AppConfig
 
 
 class ImagerProfileConfig(AppConfig):
-    """ app config class """
+    """
+    Imager profile config.
+    """
+
     name = 'imager_profile'

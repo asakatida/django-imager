@@ -1,8 +1,10 @@
 """Models."""
-from django.db import models
-from django.contrib.auth.models import User
-from sorl.thumbnail import ImageField
 from random import sample
+
+from django.contrib.auth.models import User
+from django.db import models
+from django.dispatch import receiver
+from sorl.thumbnail import ImageField
 
 
 class Photo(models.Model):
@@ -18,14 +20,16 @@ class Photo(models.Model):
         max_length=250,
         choices=(
             ('PRIVATE', 'Private'),
-            ('SHARED', 'Shared'),
-            ('PUBLIC', 'Public'),
-        )
-    )
+            ('PUBLIC', 'Public')))
 
-    def __str__(self):
-        """Str magic."""
-        return '{}'.format(self.title)
+    @classmethod
+    def public_or_user(cls, username):
+        """
+        Public or user.
+        """
+        return cls.objects.filter(
+            models.Q(album__user__username=username)
+            | models.Q(published="PUBLIC"))
 
 
 class Album(models.Model):
@@ -41,27 +45,36 @@ class Album(models.Model):
     date_created = models.DateField(auto_now_add=True)
     date_modified = models.DateField(auto_now=True)
     date_published = models.DateField(blank=True, null=True)
-    hidden = models.BoolField(default=False)
+    hidden = models.BooleanField(default=False)
     published = models.CharField(
         max_length=250,
         choices=(
             ('PRIVATE', 'Private'),
-            ('SHARED', 'Shared'),
-            ('PUBLIC', 'Public'),
-        )
-    )
-
-    def __str__(self):
-        """Str."""
-        return '{}'.format(self.title)
+            ('PUBLIC', 'Public')))
 
     def get_cover(self):
         """Get the signed cover or random."""
         return self.cover or sample(list(self.photos_set) + [None], 1)[0]
 
+    @classmethod
+    def public_or_user(cls, username):
+        """
+        Public or user.
+        """
+        return cls.objects.filter(
+            models.Q(user__username=username) | models.Q(published="PUBLIC"))
+
+    def with_cover(self):
+        """
+        All photos with cover.
+        """
+        if self.cover is not None:
+            return set(self.photos) | {self.cover}
+        return self.photos
+
 
 @receiver(models.signals.post_save, sender=User)
-def create_profile(sender, *args, created=False, instance=None, **kwargs):
+def create_hidden_album(sender, *args, created=False, instance=None, **kwargs):
     """Create Base Album with kwargs."""
     if created:
         album = Album(user=instance, hidden=True)

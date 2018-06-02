@@ -1,20 +1,19 @@
 """Test."""
-from django.test import TestCase
-from .models import Photo, Album
-import factory
-from django.contrib.auth import get_user_model
-import faker
+
+from tempfile import NamedTemporaryFile
+
 from django.contrib.auth.models import User
-from model_mommy import mommy
-import tempfile
+from django.test import TestCase
 from django.urls import reverse_lazy
+from factory import Faker
+from factory.django import DjangoModelFactory
+from model_mommy import mommy
+
 from .forms import AlbumForm, PhotoForm
+from .models import Album, Photo
 
 
-fake = faker.Faker()
-
-
-class PhotoFactory(factory.django.DjangoModelFactory):
+class PhotoFactory(DjangoModelFactory):
     """Make photo factory."""
 
     class Meta:
@@ -22,44 +21,47 @@ class PhotoFactory(factory.django.DjangoModelFactory):
 
         model = Photo
 
-    image = factory.Faker('image_url')
-    description = factory.Faker('word')
-    date_uploaded = factory.Faker('date')
-    date_modified = factory.Faker('date')
-    date_published = factory.Faker('date')
-    published = factory.Faker(
+    image = Faker('image_url')
+    description = Faker('word')
+    date_uploaded = Faker('date')
+    date_modified = Faker('date')
+    date_published = Faker('date')
+    published = Faker(
         'random_element',
         elements=[
             ('PRIVATE', 'Private'),
             ('SHARED', 'Shared'),
             ('PUBLIC', 'Public'),
-         ]
+        ]
     )
 
 
-class AlbumFactory(factory.django.DjangoModelFactory):
+class AlbumFactory(DjangoModelFactory):
     """Make photo factory."""
 
     class Meta:
         """Class for Meta."""
 
         model = Album
-    description = fake.text(max_nb_chars=250, ext_word_list=None)
-    date_created = factory.Faker('date')
-    date_modified = factory.Faker('date')
-    date_published = factory.Faker('date')
-    published = factory.Faker(
+    description = Faker('text', max_nb_chars=250, ext_word_list=None)
+    date_created = Faker('date')
+    date_modified = Faker('date')
+    date_published = Faker('date')
+    published = Faker(
         'random_element',
         elements=[
             ('PRIVATE', 'Private'),
             ('SHARED', 'Shared'),
             ('PUBLIC', 'Public'),
-         ]
+        ]
     )
 
 
 class ProfileUnitTests(TestCase):
     """Profile tests."""
+
+    user = None
+    image = None
 
     def test_user_can_see_its_profile(self):
         """Test user profile view."""
@@ -84,14 +86,14 @@ class ImageTests(TestCase):
         """Define class."""
         super().setUpClass()
 
-        for n in range(10):
+        for _ in range(10):
             user = mommy.make(User)
             user.set_password('password')
             user.save()
             album = mommy.make(Album, user=user)
             photo = mommy.make(
                 Photo,
-                image=tempfile.NamedTemporaryFile(suffix='.jpg').name)
+                image=NamedTemporaryFile(suffix='.jpg').name)
             album.photos.add(photo)
 
     @classmethod
@@ -101,7 +103,10 @@ class ImageTests(TestCase):
         super().tearDownClass()
 
 
-class ImageViewTests(ImageTests): 
+class ImageViewTests(ImageTests):
+    """
+    Image view tests.
+    """
 
     def test_200_status_on_authenticated_request_to_store(self):
         """Test 200 status."""
@@ -156,20 +161,22 @@ class ImageViewTests(ImageTests):
         """Test id user can see other user view."""
         users = list(User.objects.all())
         self.client.force_login(users[0])
-        response = self.client.get(reverse_lazy('photo', args=[Photo.objects.first().id]))
+        response = self.client.get(
+            reverse_lazy('photo', args=[Photo.objects.first().id]))
         self.assertEqual(response.status_code, 200)
 
     def test_user_photo_view_uses_base_template(self):
         """Test id user can see other user view."""
         users = list(User.objects.all())
         self.client.force_login(users[0])
-        response = self.client.get(reverse_lazy('photo', args=[Photo.objects.first().id]))
+        response = self.client.get(
+            reverse_lazy('photo', args=[Photo.objects.first().id]))
         self.assertTemplateUsed(response, 'generic/base.html')
 
     def test_user_must_be_logged_in_to_see_photo(self):
         """Test id user can see other user view."""
-        users = list(User.objects.all())
-        response = self.client.get(reverse_lazy('photo', args=[Photo.objects.first().id]))
+        response = self.client.get(
+            reverse_lazy('photo', args=[Photo.objects.first().id]))
         self.assertEqual(response.status_code, 302)
 
     def test_user_can_see_photos(self):
@@ -188,7 +195,6 @@ class ImageViewTests(ImageTests):
 
     def test_user_must_be_logged_in_to_see_photos(self):
         """Test id user can see other user view."""
-        users = list(User.objects.all())
         response = self.client.get(reverse_lazy('photos'))
         self.assertEqual(response.status_code, 302)
 
@@ -208,7 +214,6 @@ class ImageViewTests(ImageTests):
 
     def test_user_must_be_logged_in_to_see_library(self):
         """Test id user can see other user view."""
-        users = list(User.objects.all())
         response = self.client.get(reverse_lazy('library'))
         self.assertEqual(response.status_code, 302)
 
@@ -216,20 +221,22 @@ class ImageViewTests(ImageTests):
         """Test id user can see other user view."""
         users = list(User.objects.all())
         self.client.force_login(users[0])
-        response = self.client.get(reverse_lazy('album', args=[Album.objects.first().id]))
+        response = self.client.get(
+            reverse_lazy('album', args=[Album.objects.first().id]))
         self.assertEqual(response.status_code, 200)
 
     def test_user_album_view_uses_base_template(self):
         """Test id user can see other user view."""
         users = list(User.objects.all())
         self.client.force_login(users[0])
-        response = self.client.get(reverse_lazy('album', args=[Album.objects.first().id]))
+        response = self.client.get(
+            reverse_lazy('album', args=[Album.objects.first().id]))
         self.assertTemplateUsed(response, 'generic/base.html')
 
     def test_user_must_be_logged_in_to_see_album(self):
         """Test id user can see other user view."""
-        users = list(User.objects.all())
-        response = self.client.get(reverse_lazy('album', args=[Album.objects.first().id]))
+        response = self.client.get(
+            reverse_lazy('album', args=[Album.objects.first().id]))
         self.assertEqual(response.status_code, 302)
 
     def test_user_can_see_albums(self):
@@ -248,7 +255,6 @@ class ImageViewTests(ImageTests):
 
     def test_user_must_be_logged_in_to_see_albums(self):
         """Test id user can see other user view."""
-        users = list(User.objects.all())
         response = self.client.get(reverse_lazy('albums'))
         self.assertEqual(response.status_code, 302)
 
@@ -256,24 +262,44 @@ class ImageViewTests(ImageTests):
 class ImageFormTests(ImageTests):
     """Image form tests class."""
 
+    @classmethod
+    def setUpClass(cls):
+        """Define class."""
+        super().setUpClass()
+
+        cls.user = mommy.make(User)
+        cls.user.set_password('password')
+        cls.user.save()
+
+    @classmethod
+    def tearDownClass(cls):
+        """Tear Down Class."""
+        User.objects.all().delete()
+        super().tearDownClass()
+
     def test_init_album(self):
         """Test image form."""
-        user = list(User.objects.all())[0]
-        AlbumForm(username=user.username)
+        AlbumForm(username=self.user.username)
 
     def test_init_photo(self):
         """Test image form."""
-        user = list(User.objects.all())[0]
-        PhotoForm(username=user.username)
+        PhotoForm(username=self.user.username)
 
-    # def test_valid_data_album(self):
-    #     """Test image form."""
-    #     user = list(User.objects.all())[0]
-    #     form = AlbumForm({'description': '', 'cover': Photo.objects.first(), 'title': 'Title', 'published': Photo.objects.first().published, 'photos': []}, username=user.username)
-    #     form.cover = Photo.objects.first()
-    #     form.photos = [Photo.objects.first()]
-    #     print(form.errors)
-    #     self.assertTrue(form.is_valid())
+    def test_valid_data_album(self):
+        """Test image form."""
+        user = list(User.objects.all())[0]
+        form = AlbumForm(
+            {
+                'description': '',
+                'cover': Photo.objects.first(),
+                'title': 'Title',
+                'published': Photo.objects.first().published,
+                'photos': []},
+            username=user.username)
+        form.cover = Photo.objects.first()
+        form.photos = [Photo.objects.first()]
+        print(form.errors)
+        self.assertTrue(form.is_valid())
 
     def test_invalid_data_album(self):
         """Test image form."""

@@ -1,6 +1,8 @@
-from imager_images.models import Photo
-from .serializers import PhotoSerializer
 from rest_framework import generics
+
+from imager_images.models import Photo
+
+from .serializers import PhotoSerializer
 
 
 class PhotosList(generics.ListCreateAPIView):

@@ -1,14 +1,19 @@
 from random import sample
-from django.views.generic import TemplateView, UpdateView
+
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import ProfileEditForm
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
+from django.views.generic import TemplateView, UpdateView
+
+from .forms import ProfileEditForm
+from .models import ImagerProfile
 
 
 class ProfileView(TemplateView):
     """Class for Profile view."""
 
     template_name = 'imager_profile/profile.html'
+    owner = None
 
     def get_context_data(self, *args, **kwargs):
         """View for user profile."""

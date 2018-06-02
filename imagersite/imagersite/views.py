@@ -6,7 +6,7 @@ from random import sample
 
 from django.views.generic import TemplateView
 
-from imagersite.imager_images.models import Photo
+from imager_images.models import Photo
 
 
 class HomeView(TemplateView):
@@ -21,7 +21,7 @@ class HomeView(TemplateView):
         Home view.
         """
         context = super().get_context_data(**kwargs)
-        photos = list(Photo.objects.filter(published="PUBLIC"))
+        photos = list(Photo.objects.filter(published='PUBLIC'))
         if photos:
             context['background'] = sample(photos, 1)[0]
 

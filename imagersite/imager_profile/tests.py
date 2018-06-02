@@ -1,7 +1,8 @@
-from django.test import TestCase
-from .models import ImagerProfile, User
 import factory
+from django.test import TestCase
 from django.urls import reverse_lazy
+
+from .models import ImagerProfile, User
 
 
 class UserFactory(factory.django.DjangoModelFactory):
